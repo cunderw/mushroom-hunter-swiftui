@@ -16,14 +16,14 @@ extension MyMushroomsHunterApp {
 
 @main
 struct MyMushroomsHunterApp: App {
-    @StateObject private var authManager = AuthManager.shared
+    @StateObject private var authManagerWrapper = AuthManagerWrapper(authManager: AuthManager.shared)
     init() {
         setupAuthentication()
     }
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environmentObject(authManager)
-        }
+                    ContentView()
+                        .environmentObject(authManagerWrapper)
+                }
     }
 }

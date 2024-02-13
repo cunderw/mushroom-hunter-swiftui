@@ -10,6 +10,8 @@
 		D2213CBF2B7BD6E3005BCED7 /* MushroomModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2213CBE2B7BD6E3005BCED7 /* MushroomModel.swift */; };
 		D2213CC32B7BD951005BCED7 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2213CC22B7BD951005BCED7 /* AuthManager.swift */; };
 		D2213CC52B7BDDC3005BCED7 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2213CC42B7BDDC3005BCED7 /* ProfileView.swift */; };
+		D2213CC82B7BE71C005BCED7 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2213CC72B7BE71C005BCED7 /* HomeView.swift */; };
+		D2213CCB2B7BE74F005BCED7 /* NearMeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2213CCA2B7BE74F005BCED7 /* NearMeView.swift */; };
 		D260C5FE2B7BC38400DD0593 /* MyMushroomsHunterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D260C5FD2B7BC38400DD0593 /* MyMushroomsHunterApp.swift */; };
 		D260C6002B7BC38400DD0593 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D260C5FF2B7BC38400DD0593 /* ContentView.swift */; };
 		D260C6022B7BC38800DD0593 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D260C6012B7BC38800DD0593 /* Assets.xcassets */; };
@@ -48,6 +50,8 @@
 		D2213CBE2B7BD6E3005BCED7 /* MushroomModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MushroomModel.swift; sourceTree = "<group>"; };
 		D2213CC22B7BD951005BCED7 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		D2213CC42B7BDDC3005BCED7 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		D2213CC72B7BE71C005BCED7 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		D2213CCA2B7BE74F005BCED7 /* NearMeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearMeView.swift; sourceTree = "<group>"; };
 		D260C5FA2B7BC38400DD0593 /* mymushroomshunter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mymushroomshunter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D260C5FD2B7BC38400DD0593 /* MyMushroomsHunterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMushroomsHunterApp.swift; sourceTree = "<group>"; };
 		D260C5FF2B7BC38400DD0593 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -115,6 +119,22 @@
 				D2213CC22B7BD951005BCED7 /* AuthManager.swift */,
 			);
 			path = Auth;
+			sourceTree = "<group>";
+		};
+		D2213CC62B7BE700005BCED7 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				D2213CC72B7BE71C005BCED7 /* HomeView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		D2213CC92B7BE73F005BCED7 /* NearMe */ = {
+			isa = PBXGroup;
+			children = (
+				D2213CCA2B7BE74F005BCED7 /* NearMeView.swift */,
+			);
+			path = NearMe;
 			sourceTree = "<group>";
 		};
 		D260C5F12B7BC38400DD0593 = {
@@ -186,6 +206,8 @@
 		D260C6392B7BC8D800DD0593 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				D2213CC92B7BE73F005BCED7 /* NearMe */,
+				D2213CC62B7BE700005BCED7 /* Home */,
 				D2213CC12B7BD93A005BCED7 /* Auth */,
 				D2213CC02B7BD900005BCED7 /* Profile */,
 				D2213CBD2B7BD6CF005BCED7 /* Mushrrom */,
@@ -345,10 +367,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				D260C62A2B7BC71000DD0593 /* LoginView.swift in Sources */,
+				D2213CC82B7BE71C005BCED7 /* HomeView.swift in Sources */,
 				D2213CBF2B7BD6E3005BCED7 /* MushroomModel.swift in Sources */,
 				D2213CC32B7BD951005BCED7 /* AuthManager.swift in Sources */,
 				D260C6002B7BC38400DD0593 /* ContentView.swift in Sources */,
 				D260C5FE2B7BC38400DD0593 /* MyMushroomsHunterApp.swift in Sources */,
+				D2213CCB2B7BE74F005BCED7 /* NearMeView.swift in Sources */,
 				D2213CC52B7BDDC3005BCED7 /* ProfileView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

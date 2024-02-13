@@ -8,16 +8,42 @@
 import SwiftUI
 
 struct ContentView: View {
-    @EnvironmentObject var authManager: AuthManager
+    @EnvironmentObject var authManagerWrapper: AuthManagerWrapper
     var body: some View {
         VStack {
-            if authManager.isUserAuthenticated {
-                ProfileView().environmentObject(authManager)
+            if authManagerWrapper.authManager.isUserAuthenticated {
+                TabView {
+                    HomeView()
+                        .tabItem {
+                            Label("Home", systemImage: "house")
+                        }
+                    NearMeView()
+                        .tabItem {
+                            Label("Near Me", systemImage: "location")
+                        }
+                    ProfileView()
+                        .tabItem {
+                            Label("Profile", systemImage: "person")
+                        }
+                        .environmentObject(authManagerWrapper)
+                }
             } else {
                 LoginView()
-                    .environmentObject(authManager)
+                    .environmentObject(authManagerWrapper)
             }
         }
     }
 }
 
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+            .environmentObject(AuthManagerWrapper(authManager: MockAuthManager(isUserAuthenticated: true)))
+            .previewDisplayName("User Authenticated")
+
+        ContentView()
+            .environmentObject(AuthManagerWrapper(authManager: MockAuthManager(isUserAuthenticated: false)))
+            .previewDisplayName("User Not Authenticated")
+    }
+}
