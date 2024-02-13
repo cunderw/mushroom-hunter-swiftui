@@ -1,0 +1,593 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D260C5FE2B7BC38400DD0593 /* mymushroomshunterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D260C5FD2B7BC38400DD0593 /* mymushroomshunterApp.swift */; };
+		D260C6002B7BC38400DD0593 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D260C5FF2B7BC38400DD0593 /* ContentView.swift */; };
+		D260C6022B7BC38800DD0593 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D260C6012B7BC38800DD0593 /* Assets.xcassets */; };
+		D260C6052B7BC38800DD0593 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D260C6042B7BC38800DD0593 /* Preview Assets.xcassets */; };
+		D260C60F2B7BC38800DD0593 /* mymushroomshunterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D260C60E2B7BC38800DD0593 /* mymushroomshunterTests.swift */; };
+		D260C6192B7BC38800DD0593 /* mymushroomshunterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D260C6182B7BC38800DD0593 /* mymushroomshunterUITests.swift */; };
+		D260C61B2B7BC38800DD0593 /* mymushroomshunterUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D260C61A2B7BC38800DD0593 /* mymushroomshunterUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D260C60B2B7BC38800DD0593 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D260C5F22B7BC38400DD0593 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D260C5F92B7BC38400DD0593;
+			remoteInfo = mymushroomshunter;
+		};
+		D260C6152B7BC38800DD0593 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D260C5F22B7BC38400DD0593 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D260C5F92B7BC38400DD0593;
+			remoteInfo = mymushroomshunter;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		D260C5FA2B7BC38400DD0593 /* mymushroomshunter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mymushroomshunter.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D260C5FD2B7BC38400DD0593 /* mymushroomshunterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mymushroomshunterApp.swift; sourceTree = "<group>"; };
+		D260C5FF2B7BC38400DD0593 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		D260C6012B7BC38800DD0593 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D260C6042B7BC38800DD0593 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		D260C60A2B7BC38800DD0593 /* mymushroomshunterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = mymushroomshunterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D260C60E2B7BC38800DD0593 /* mymushroomshunterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mymushroomshunterTests.swift; sourceTree = "<group>"; };
+		D260C6142B7BC38800DD0593 /* mymushroomshunterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = mymushroomshunterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D260C6182B7BC38800DD0593 /* mymushroomshunterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mymushroomshunterUITests.swift; sourceTree = "<group>"; };
+		D260C61A2B7BC38800DD0593 /* mymushroomshunterUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mymushroomshunterUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D260C5F72B7BC38400DD0593 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D260C6072B7BC38800DD0593 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D260C6112B7BC38800DD0593 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D260C5F12B7BC38400DD0593 = {
+			isa = PBXGroup;
+			children = (
+				D260C5FC2B7BC38400DD0593 /* mymushroomshunter */,
+				D260C60D2B7BC38800DD0593 /* mymushroomshunterTests */,
+				D260C6172B7BC38800DD0593 /* mymushroomshunterUITests */,
+				D260C5FB2B7BC38400DD0593 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D260C5FB2B7BC38400DD0593 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D260C5FA2B7BC38400DD0593 /* mymushroomshunter.app */,
+				D260C60A2B7BC38800DD0593 /* mymushroomshunterTests.xctest */,
+				D260C6142B7BC38800DD0593 /* mymushroomshunterUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D260C5FC2B7BC38400DD0593 /* mymushroomshunter */ = {
+			isa = PBXGroup;
+			children = (
+				D260C5FD2B7BC38400DD0593 /* mymushroomshunterApp.swift */,
+				D260C5FF2B7BC38400DD0593 /* ContentView.swift */,
+				D260C6012B7BC38800DD0593 /* Assets.xcassets */,
+				D260C6032B7BC38800DD0593 /* Preview Content */,
+			);
+			path = mymushroomshunter;
+			sourceTree = "<group>";
+		};
+		D260C6032B7BC38800DD0593 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				D260C6042B7BC38800DD0593 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		D260C60D2B7BC38800DD0593 /* mymushroomshunterTests */ = {
+			isa = PBXGroup;
+			children = (
+				D260C60E2B7BC38800DD0593 /* mymushroomshunterTests.swift */,
+			);
+			path = mymushroomshunterTests;
+			sourceTree = "<group>";
+		};
+		D260C6172B7BC38800DD0593 /* mymushroomshunterUITests */ = {
+			isa = PBXGroup;
+			children = (
+				D260C6182B7BC38800DD0593 /* mymushroomshunterUITests.swift */,
+				D260C61A2B7BC38800DD0593 /* mymushroomshunterUITestsLaunchTests.swift */,
+			);
+			path = mymushroomshunterUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D260C5F92B7BC38400DD0593 /* mymushroomshunter */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D260C61E2B7BC38800DD0593 /* Build configuration list for PBXNativeTarget "mymushroomshunter" */;
+			buildPhases = (
+				D260C5F62B7BC38400DD0593 /* Sources */,
+				D260C5F72B7BC38400DD0593 /* Frameworks */,
+				D260C5F82B7BC38400DD0593 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = mymushroomshunter;
+			productName = mymushroomshunter;
+			productReference = D260C5FA2B7BC38400DD0593 /* mymushroomshunter.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D260C6092B7BC38800DD0593 /* mymushroomshunterTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D260C6212B7BC38800DD0593 /* Build configuration list for PBXNativeTarget "mymushroomshunterTests" */;
+			buildPhases = (
+				D260C6062B7BC38800DD0593 /* Sources */,
+				D260C6072B7BC38800DD0593 /* Frameworks */,
+				D260C6082B7BC38800DD0593 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D260C60C2B7BC38800DD0593 /* PBXTargetDependency */,
+			);
+			name = mymushroomshunterTests;
+			productName = mymushroomshunterTests;
+			productReference = D260C60A2B7BC38800DD0593 /* mymushroomshunterTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		D260C6132B7BC38800DD0593 /* mymushroomshunterUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D260C6242B7BC38800DD0593 /* Build configuration list for PBXNativeTarget "mymushroomshunterUITests" */;
+			buildPhases = (
+				D260C6102B7BC38800DD0593 /* Sources */,
+				D260C6112B7BC38800DD0593 /* Frameworks */,
+				D260C6122B7BC38800DD0593 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D260C6162B7BC38800DD0593 /* PBXTargetDependency */,
+			);
+			name = mymushroomshunterUITests;
+			productName = mymushroomshunterUITests;
+			productReference = D260C6142B7BC38800DD0593 /* mymushroomshunterUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D260C5F22B7BC38400DD0593 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1520;
+				LastUpgradeCheck = 1520;
+				TargetAttributes = {
+					D260C5F92B7BC38400DD0593 = {
+						CreatedOnToolsVersion = 15.2;
+					};
+					D260C6092B7BC38800DD0593 = {
+						CreatedOnToolsVersion = 15.2;
+						TestTargetID = D260C5F92B7BC38400DD0593;
+					};
+					D260C6132B7BC38800DD0593 = {
+						CreatedOnToolsVersion = 15.2;
+						TestTargetID = D260C5F92B7BC38400DD0593;
+					};
+				};
+			};
+			buildConfigurationList = D260C5F52B7BC38400DD0593 /* Build configuration list for PBXProject "mymushroomshunter" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D260C5F12B7BC38400DD0593;
+			productRefGroup = D260C5FB2B7BC38400DD0593 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D260C5F92B7BC38400DD0593 /* mymushroomshunter */,
+				D260C6092B7BC38800DD0593 /* mymushroomshunterTests */,
+				D260C6132B7BC38800DD0593 /* mymushroomshunterUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D260C5F82B7BC38400DD0593 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D260C6052B7BC38800DD0593 /* Preview Assets.xcassets in Resources */,
+				D260C6022B7BC38800DD0593 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D260C6082B7BC38800DD0593 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D260C6122B7BC38800DD0593 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D260C5F62B7BC38400DD0593 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D260C6002B7BC38400DD0593 /* ContentView.swift in Sources */,
+				D260C5FE2B7BC38400DD0593 /* mymushroomshunterApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D260C6062B7BC38800DD0593 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D260C60F2B7BC38800DD0593 /* mymushroomshunterTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D260C6102B7BC38800DD0593 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D260C61B2B7BC38800DD0593 /* mymushroomshunterUITestsLaunchTests.swift in Sources */,
+				D260C6192B7BC38800DD0593 /* mymushroomshunterUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D260C60C2B7BC38800DD0593 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D260C5F92B7BC38400DD0593 /* mymushroomshunter */;
+			targetProxy = D260C60B2B7BC38800DD0593 /* PBXContainerItemProxy */;
+		};
+		D260C6162B7BC38800DD0593 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D260C5F92B7BC38400DD0593 /* mymushroomshunter */;
+			targetProxy = D260C6152B7BC38800DD0593 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		D260C61C2B7BC38800DD0593 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		D260C61D2B7BC38800DD0593 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D260C61F2B7BC38800DD0593 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"mymushroomshunter/Preview Content\"";
+				DEVELOPMENT_TEAM = 447FMVD577;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.annacar.mymushroomshunter;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D260C6202B7BC38800DD0593 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"mymushroomshunter/Preview Content\"";
+				DEVELOPMENT_TEAM = 447FMVD577;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.annacar.mymushroomshunter;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		D260C6222B7BC38800DD0593 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 447FMVD577;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.annacar.mymushroomshunterTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/mymushroomshunter.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/mymushroomshunter";
+			};
+			name = Debug;
+		};
+		D260C6232B7BC38800DD0593 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 447FMVD577;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.annacar.mymushroomshunterTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/mymushroomshunter.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/mymushroomshunter";
+			};
+			name = Release;
+		};
+		D260C6252B7BC38800DD0593 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 447FMVD577;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.annacar.mymushroomshunterUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = mymushroomshunter;
+			};
+			name = Debug;
+		};
+		D260C6262B7BC38800DD0593 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 447FMVD577;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.annacar.mymushroomshunterUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = mymushroomshunter;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D260C5F52B7BC38400DD0593 /* Build configuration list for PBXProject "mymushroomshunter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D260C61C2B7BC38800DD0593 /* Debug */,
+				D260C61D2B7BC38800DD0593 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D260C61E2B7BC38800DD0593 /* Build configuration list for PBXNativeTarget "mymushroomshunter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D260C61F2B7BC38800DD0593 /* Debug */,
+				D260C6202B7BC38800DD0593 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D260C6212B7BC38800DD0593 /* Build configuration list for PBXNativeTarget "mymushroomshunterTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D260C6222B7BC38800DD0593 /* Debug */,
+				D260C6232B7BC38800DD0593 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D260C6242B7BC38800DD0593 /* Build configuration list for PBXNativeTarget "mymushroomshunterUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D260C6252B7BC38800DD0593 /* Debug */,
+				D260C6262B7BC38800DD0593 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D260C5F22B7BC38400DD0593 /* Project object */;
+}
