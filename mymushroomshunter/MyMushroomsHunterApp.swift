@@ -6,9 +6,19 @@
 //
 
 import SwiftUI
+import Firebase
+
+extension MyMushroomsHunterApp {
+  private func setupAuthentication() {
+    FirebaseApp.configure()
+  }
+}
 
 @main
-struct mymushroomshunterApp: App {
+struct MyMushroomsHunterApp: App {
+    init() {
+        setupAuthentication()
+    }
     var body: some Scene {
         WindowGroup {
             ContentView()

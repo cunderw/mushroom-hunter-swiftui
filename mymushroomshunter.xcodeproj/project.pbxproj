@@ -7,13 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D260C5FE2B7BC38400DD0593 /* mymushroomshunterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D260C5FD2B7BC38400DD0593 /* mymushroomshunterApp.swift */; };
+		D2213CBF2B7BD6E3005BCED7 /* MushroomModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2213CBE2B7BD6E3005BCED7 /* MushroomModel.swift */; };
+		D260C5FE2B7BC38400DD0593 /* MyMushroomsHunterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D260C5FD2B7BC38400DD0593 /* MyMushroomsHunterApp.swift */; };
 		D260C6002B7BC38400DD0593 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D260C5FF2B7BC38400DD0593 /* ContentView.swift */; };
 		D260C6022B7BC38800DD0593 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D260C6012B7BC38800DD0593 /* Assets.xcassets */; };
 		D260C6052B7BC38800DD0593 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D260C6042B7BC38800DD0593 /* Preview Assets.xcassets */; };
 		D260C60F2B7BC38800DD0593 /* mymushroomshunterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D260C60E2B7BC38800DD0593 /* mymushroomshunterTests.swift */; };
 		D260C6192B7BC38800DD0593 /* mymushroomshunterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D260C6182B7BC38800DD0593 /* mymushroomshunterUITests.swift */; };
 		D260C61B2B7BC38800DD0593 /* mymushroomshunterUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D260C61A2B7BC38800DD0593 /* mymushroomshunterUITestsLaunchTests.swift */; };
+		D260C6282B7BC6E900DD0593 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D260C6272B7BC6E800DD0593 /* GoogleService-Info.plist */; };
+		D260C62A2B7BC71000DD0593 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D260C6292B7BC71000DD0593 /* LoginView.swift */; };
+		D260C62D2B7BC84D00DD0593 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = D260C62C2B7BC84D00DD0593 /* FirebaseAnalytics */; };
+		D260C62F2B7BC84D00DD0593 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D260C62E2B7BC84D00DD0593 /* FirebaseAnalyticsSwift */; };
+		D260C6312B7BC84D00DD0593 /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = D260C6302B7BC84D00DD0593 /* FirebaseAppCheck */; };
+		D260C6332B7BC84D00DD0593 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = D260C6322B7BC84D00DD0593 /* FirebaseAuth */; };
+		D260C6352B7BC84D00DD0593 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D260C6342B7BC84D00DD0593 /* FirebaseFirestoreSwift */; };
+		D260C6372B7BC84D00DD0593 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = D260C6362B7BC84D00DD0593 /* FirebaseStorage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,8 +43,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D2213CBE2B7BD6E3005BCED7 /* MushroomModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MushroomModel.swift; sourceTree = "<group>"; };
 		D260C5FA2B7BC38400DD0593 /* mymushroomshunter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mymushroomshunter.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		D260C5FD2B7BC38400DD0593 /* mymushroomshunterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mymushroomshunterApp.swift; sourceTree = "<group>"; };
+		D260C5FD2B7BC38400DD0593 /* MyMushroomsHunterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMushroomsHunterApp.swift; sourceTree = "<group>"; };
 		D260C5FF2B7BC38400DD0593 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		D260C6012B7BC38800DD0593 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D260C6042B7BC38800DD0593 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -44,6 +54,8 @@
 		D260C6142B7BC38800DD0593 /* mymushroomshunterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = mymushroomshunterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D260C6182B7BC38800DD0593 /* mymushroomshunterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mymushroomshunterUITests.swift; sourceTree = "<group>"; };
 		D260C61A2B7BC38800DD0593 /* mymushroomshunterUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mymushroomshunterUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		D260C6272B7BC6E800DD0593 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D260C6292B7BC71000DD0593 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +63,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D260C6352B7BC84D00DD0593 /* FirebaseFirestoreSwift in Frameworks */,
+				D260C62F2B7BC84D00DD0593 /* FirebaseAnalyticsSwift in Frameworks */,
+				D260C6312B7BC84D00DD0593 /* FirebaseAppCheck in Frameworks */,
+				D260C62D2B7BC84D00DD0593 /* FirebaseAnalytics in Frameworks */,
+				D260C6332B7BC84D00DD0593 /* FirebaseAuth in Frameworks */,
+				D260C6372B7BC84D00DD0593 /* FirebaseStorage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,6 +89,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D2213CBD2B7BD6CF005BCED7 /* Mushrrom */ = {
+			isa = PBXGroup;
+			children = (
+				D2213CBE2B7BD6E3005BCED7 /* MushroomModel.swift */,
+			);
+			path = Mushrrom;
+			sourceTree = "<group>";
+		};
 		D260C5F12B7BC38400DD0593 = {
 			isa = PBXGroup;
 			children = (
@@ -94,7 +120,9 @@
 		D260C5FC2B7BC38400DD0593 /* mymushroomshunter */ = {
 			isa = PBXGroup;
 			children = (
-				D260C5FD2B7BC38400DD0593 /* mymushroomshunterApp.swift */,
+				D260C6382B7BC87D00DD0593 /* Code */,
+				D260C6272B7BC6E800DD0593 /* GoogleService-Info.plist */,
+				D260C5FD2B7BC38400DD0593 /* MyMushroomsHunterApp.swift */,
 				D260C5FF2B7BC38400DD0593 /* ContentView.swift */,
 				D260C6012B7BC38800DD0593 /* Assets.xcassets */,
 				D260C6032B7BC38800DD0593 /* Preview Content */,
@@ -127,6 +155,31 @@
 			path = mymushroomshunterUITests;
 			sourceTree = "<group>";
 		};
+		D260C6382B7BC87D00DD0593 /* Code */ = {
+			isa = PBXGroup;
+			children = (
+				D260C6392B7BC8D800DD0593 /* Features */,
+			);
+			path = Code;
+			sourceTree = "<group>";
+		};
+		D260C6392B7BC8D800DD0593 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				D2213CBD2B7BD6CF005BCED7 /* Mushrrom */,
+				D260C63A2B7BC8E100DD0593 /* Login */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		D260C63A2B7BC8E100DD0593 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				D260C6292B7BC71000DD0593 /* LoginView.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -143,6 +196,14 @@
 			dependencies = (
 			);
 			name = mymushroomshunter;
+			packageProductDependencies = (
+				D260C62C2B7BC84D00DD0593 /* FirebaseAnalytics */,
+				D260C62E2B7BC84D00DD0593 /* FirebaseAnalyticsSwift */,
+				D260C6302B7BC84D00DD0593 /* FirebaseAppCheck */,
+				D260C6322B7BC84D00DD0593 /* FirebaseAuth */,
+				D260C6342B7BC84D00DD0593 /* FirebaseFirestoreSwift */,
+				D260C6362B7BC84D00DD0593 /* FirebaseStorage */,
+			);
 			productName = mymushroomshunter;
 			productReference = D260C5FA2B7BC38400DD0593 /* mymushroomshunter.app */;
 			productType = "com.apple.product-type.application";
@@ -215,6 +276,9 @@
 				Base,
 			);
 			mainGroup = D260C5F12B7BC38400DD0593;
+			packageReferences = (
+				D260C62B2B7BC84D00DD0593 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = D260C5FB2B7BC38400DD0593 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -233,6 +297,7 @@
 			files = (
 				D260C6052B7BC38800DD0593 /* Preview Assets.xcassets in Resources */,
 				D260C6022B7BC38800DD0593 /* Assets.xcassets in Resources */,
+				D260C6282B7BC6E900DD0593 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,8 +322,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D260C62A2B7BC71000DD0593 /* LoginView.swift in Sources */,
+				D2213CBF2B7BD6E3005BCED7 /* MushroomModel.swift in Sources */,
 				D260C6002B7BC38400DD0593 /* ContentView.swift in Sources */,
-				D260C5FE2B7BC38400DD0593 /* mymushroomshunterApp.swift in Sources */,
+				D260C5FE2B7BC38400DD0593 /* MyMushroomsHunterApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -588,6 +655,50 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D260C62B2B7BC84D00DD0593 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.21.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D260C62C2B7BC84D00DD0593 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D260C62B2B7BC84D00DD0593 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		D260C62E2B7BC84D00DD0593 /* FirebaseAnalyticsSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D260C62B2B7BC84D00DD0593 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsSwift;
+		};
+		D260C6302B7BC84D00DD0593 /* FirebaseAppCheck */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D260C62B2B7BC84D00DD0593 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAppCheck;
+		};
+		D260C6322B7BC84D00DD0593 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D260C62B2B7BC84D00DD0593 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		D260C6342B7BC84D00DD0593 /* FirebaseFirestoreSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D260C62B2B7BC84D00DD0593 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestoreSwift;
+		};
+		D260C6362B7BC84D00DD0593 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D260C62B2B7BC84D00DD0593 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D260C5F22B7BC38400DD0593 /* Project object */;
 }
