@@ -13,7 +13,7 @@ struct ContentView: View {
         VStack {
             if authManager.isUserAuthenticated {
                 TabView {
-                    HomeView()
+                    MyMushroomsView()
                         .tabItem {
                             Label("Home", systemImage: "house")
                         }
@@ -25,16 +25,13 @@ struct ContentView: View {
                         .tabItem {
                             Label("Profile", systemImage: "person")
                         }
-                        .environmentObject(authManager)
                 }
             } else {
                 LoginView()
-                    .environmentObject(authManager)
             }
         }
     }
 }
-
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
@@ -45,7 +42,7 @@ struct ContentView_Previews: PreviewProvider {
                 )
             )
             .previewDisplayName("User Authenticated")
-        
+
         ContentView()
             .environmentObject(
                 AuthManager(

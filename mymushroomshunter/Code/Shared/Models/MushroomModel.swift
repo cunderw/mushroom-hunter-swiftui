@@ -5,13 +5,12 @@
 //  Created by Carson Underwood on 2/13/24.
 //
 
-
-import Foundation
 import CoreLocation
 import FirebaseFirestore
+import Foundation
 
 struct Mushroom: Identifiable {
-    let id: String  // Document ID
+    let id: String // Document ID
     let name: String
     let description: String
     let photoUrl: String
@@ -23,7 +22,6 @@ struct Mushroom: Identifiable {
 extension DateFormatter {
     static let customDateFormatter: DateFormatter = {
         let formatter = DateFormatter()
-        // Adjust the format to match the structure of your Firestore date strings
         formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS"
         formatter.calendar = Calendar(identifier: .iso8601)
         formatter.timeZone = TimeZone(secondsFromGMT: 0)
@@ -31,7 +29,6 @@ extension DateFormatter {
         return formatter
     }()
 }
-
 
 extension Mushroom {
     init?(document: QueryDocumentSnapshot) {
@@ -58,9 +55,9 @@ extension Mushroom {
         }
 
         guard let dateFoundString = data["dateFound"] as? String else {
-                    print("Error: 'dateFound' is not a String")
-                    return nil
-                }
+            print("Error: 'dateFound' is not a String")
+            return nil
+        }
 
         guard let dateFound = DateFormatter.customDateFormatter.date(from: dateFoundString) else {
             print("Error: 'dateFound' could not be converted to Date from string: \(dateFoundString)")
@@ -69,7 +66,8 @@ extension Mushroom {
 
         guard let geolocationDict = data["geolocation"] as? [String: Any],
               let latitude = geolocationDict["latitude"] as? Double,
-              let longitude = geolocationDict["longitude"] as? Double else {
+              let longitude = geolocationDict["longitude"] as? Double
+        else {
             print("Error: Expected 'geolocation' to be a dictionary with Double latitude and longitude but found \(type(of: data["geolocation"]!))")
             return nil
         }
@@ -95,21 +93,5 @@ extension Mushroom {
             geolocation: CLLocationCoordinate2D(latitude: 51.509865, longitude: -0.118092),
             userID: "user123"
         )
-    }
-}
-
-class MockMushroomViewModel: MushroomViewModel {
-    override init() {
-        super.init()
-        // Populate the `mushrooms` array with sample data
-        self.mushrooms = [
-            Mushroom.sample,
-            Mushroom.sample,
-            Mushroom.sample,
-            Mushroom.sample,
-            Mushroom.sample,
-            Mushroom.sample,
-            Mushroom.sample
-        ]
     }
 }
