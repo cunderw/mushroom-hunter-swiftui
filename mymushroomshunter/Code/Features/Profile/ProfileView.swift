@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct ProfileView: View {
-    @EnvironmentObject var authManagerWrapper: AuthManagerWrapper
+    @EnvironmentObject var authManager: AuthManager
     var body: some View {
         VStack {
-                Text("Welcome, \(authManagerWrapper.authManager.user?.email ?? "User")!")
+                Text("Welcome, \(authManager.user?.email ?? "User")!")
                 Button("Sign Out") {
-                    authManagerWrapper.authManager.signOut()
+                    authManager.signOut()
                 }
         }
     }

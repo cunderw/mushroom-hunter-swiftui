@@ -5,119 +5,179 @@
 //  Created by Carson Underwood on 2/13/24.
 //
 
-import Foundation
-import FirebaseAuth
 import Combine
+import FirebaseAuth
 
-protocol AuthManagerProtocol {
-    var isUserAuthenticated: Bool { get set }
-    var user: User? { get set }
-    func signIn(email: String, password: String)
-    func signUp(email: String, password: String)
-    func signOut()
-    
+protocol UserProtocol {
+    var uid: String { get }
+    var email: String? { get }
+}
+
+extension User: UserProtocol {}
+
+protocol AuthenticationService {
+    var currentUser: UserProtocol? { get }
+    func signIn(withEmail email: String, password: String, completion: @escaping (Bool, Error?) -> Void)
+    func signUp(withEmail email: String, password: String, completion: @escaping (Bool, Error?) -> Void)
+    func signOut() throws
     var objectWillChange: ObservableObjectPublisher { get }
 }
 
-
-class AuthManager: ObservableObject, AuthManagerProtocol {
+class AuthManager: ObservableObject {
     @Published var isUserAuthenticated: Bool = false
-    @Published var user: User? = nil
+    @Published var user: UserProtocol?
 
-    static let shared = AuthManager()
+    private var authService: AuthenticationService
+    private var cancellables: Set<AnyCancellable> = []
 
-     init() {
-        self.isUserAuthenticated = Auth.auth().currentUser != nil
-        self.user = Auth.auth().currentUser
+    init(authService: AuthenticationService) {
+        self.authService = authService
 
-        Auth.auth().addStateDidChangeListener { [weak self] (auth, user) in
-            self?.isUserAuthenticated = user != nil
-            self?.user = user
-        }
+        self.isUserAuthenticated = authService.currentUser != nil
+        self.user = authService.currentUser
+
+        authService.objectWillChange.sink { [weak self] in
+            self?.user = self?.authService.currentUser
+            self?.isUserAuthenticated = (self?.authService.currentUser != nil)
+        }.store(in: &cancellables)
     }
 
-    func signIn(email: String, password: String) {
-        Auth.auth().signIn(withEmail: email, password: password) { [weak self] authResult, error in
-            if let error = error {
-                print("Error signing in: %@", error.localizedDescription)
-            } else {
-                self?.isUserAuthenticated = true
-                self?.user = Auth.auth().currentUser
+    func signIn(email: String, password: String, completion: @escaping () -> Void = {}) {
+        authService.signIn(withEmail: email, password: password) { [weak self] success, error in
+            DispatchQueue.main.async {
+                if success {
+                    self?.isUserAuthenticated = true
+                    self?.user = self?.authService.currentUser
+                } else {
+                    print("Error signing in: \(error?.localizedDescription ?? "Unknown error")")
+                }
+                completion()
             }
         }
     }
-    
-    func signUp(email: String, password: String) {
-        Auth.auth().createUser(withEmail: email, password: password) { [weak self] authResult, error in
-            if error != nil {
-                // TODO - add alert
-                print("Error signing up: %@", error!.localizedDescription)
-            } else {
-                self?.isUserAuthenticated = true
-                self?.user = Auth.auth().currentUser
+
+    func signUp(email: String, password: String, completion: @escaping () -> Void = {}) {
+        authService.signUp(withEmail: email, password: password) { [weak self] success, error in
+            DispatchQueue.main.async {
+                if success {
+                    self?.isUserAuthenticated = true
+                    self?.user = self?.authService.currentUser
+                } else {
+                    print("Error signing up: \(error?.localizedDescription ?? "Unknown error")")
+                }
+                completion()
             }
         }
     }
 
     func signOut() {
         do {
-            try Auth.auth().signOut()
-            self.isUserAuthenticated = false
-            self.user = nil
-        } catch let signOutError as NSError {
-            print("Error signing out: %@", signOutError)
+            try authService.signOut()
+            isUserAuthenticated = false
+            user = nil
+        } catch {
+            print("Error signing out: \(error.localizedDescription)")
         }
     }
 }
 
-class AuthManagerWrapper: ObservableObject {
-    var authManager: AuthManagerProtocol {
-        willSet {
-            cancellable?.cancel()
-        }
-        didSet {
-            cancellable = authManager.objectWillChange.sink { [weak self] in
-                self?.objectWillChange.send()
+class MockUser: UserProtocol {
+    var uid: String
+    var email: String?
+
+    init(uid: String, email: String?) {
+        self.uid = uid
+        self.email = email
+    }
+}
+
+class FirebaseAuthenticationService: AuthenticationService {
+    var objectWillChange = ObservableObjectPublisher()
+
+    var currentUser: UserProtocol? {
+        Auth.auth().currentUser
+    }
+
+    func signIn(withEmail email: String, password: String, completion: @escaping (Bool, Error?) -> Void) {
+        Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
+            if let _ = authResult?.user {
+                self.objectWillChange.send()
+                completion(true, nil)
+            } else {
+                completion(false, error)
             }
         }
     }
 
-    private var cancellable: AnyCancellable?
-
-    init(authManager: AuthManagerProtocol) {
-        self.authManager = authManager
-        cancellable = authManager.objectWillChange.sink { [weak self] in
-            self?.objectWillChange.send()
+    func signUp(withEmail email: String, password: String, completion: @escaping (Bool, Error?) -> Void) {
+        Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
+            if let _ = authResult?.user {
+                self.objectWillChange.send()
+                completion(true, nil)
+            } else {
+                completion(false, error)
+            }
         }
     }
+
+    func signOut() throws {
+        try Auth.auth().signOut()
+        objectWillChange.send()
+    }
 }
 
-class MockAuthManager: AuthManagerProtocol {
-    var isUserAuthenticated: Bool
-    var user: User?
+class MockAuthenticationService: AuthenticationService {
     var objectWillChange = ObservableObjectPublisher()
 
-    init(isUserAuthenticated: Bool = false, user: User? = nil) {
-        self.isUserAuthenticated = isUserAuthenticated
-        self.user = user
+    var currentUser: UserProtocol? {
+        willSet {
+            objectWillChange.send()
+        }
     }
 
-    func signIn(email: String, password: String) {
-        // Simulate sign-in
-        self.isUserAuthenticated = true
-        objectWillChange.send()
-    }
-    
-    func signUp(email: String, password: String) {
-        // Simulate sign-up
-        self.isUserAuthenticated = true
-        objectWillChange.send()
+    var signInShouldSucceed: Bool = true
+    var signUpShouldSucceed: Bool = true
+    var signOutShouldSucceed: Bool = true
+    var signInError: Error?
+    var signUpError: Error?
+    var signOutError: Error?
+
+    init(currentUser: UserProtocol? = nil, signInShouldSucceed: Bool = true, signUpShouldSucceed: Bool = true, signOutShouldSucceed: Bool = true, signInError: Error? = nil, signUpError: Error? = nil, signOutError: Error? = nil) {
+        self.currentUser = currentUser
+        self.signInShouldSucceed = signInShouldSucceed
+        self.signUpShouldSucceed = signUpShouldSucceed
+        self.signOutShouldSucceed = signOutShouldSucceed
+        self.signInError = signInError
+        self.signUpError = signUpError
+        self.signOutError = signOutError
     }
 
-    func signOut() {
-        // Simulate sign-out
-        self.isUserAuthenticated = false
-        objectWillChange.send()
+    func signIn(withEmail email: String, password: String, completion: @escaping (Bool, Error?) -> Void) {
+        if signInShouldSucceed {
+            currentUser = MockUser(uid: "mockUid", email: email)
+            completion(true, nil)
+        } else {
+            completion(false, signInError)
+        }
+    }
+
+    func signUp(withEmail email: String, password: String, completion: @escaping (Bool, Error?) -> Void) {
+        if signUpShouldSucceed {
+            currentUser = MockUser(uid: "mockUid", email: email)
+            completion(true, nil)
+        } else {
+            completion(false, signUpError)
+        }
+    }
+
+    func signOut() throws {
+        if !signOutShouldSucceed {
+            if let error = signOutError {
+                throw error
+            } else {
+                throw NSError(domain: "MockAuthService", code: -1, userInfo: [NSLocalizedDescriptionKey: "Mock sign out failure"])
+            }
+        }
+        currentUser = nil
     }
 }
-

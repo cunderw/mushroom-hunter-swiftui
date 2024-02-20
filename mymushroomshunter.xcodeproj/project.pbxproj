@@ -31,6 +31,7 @@
 		D260C6332B7BC84D00DD0593 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = D260C6322B7BC84D00DD0593 /* FirebaseAuth */; };
 		D260C6352B7BC84D00DD0593 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D260C6342B7BC84D00DD0593 /* FirebaseFirestoreSwift */; };
 		D260C6372B7BC84D00DD0593 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = D260C6362B7BC84D00DD0593 /* FirebaseStorage */; };
+		D291F7F62B850AB5002E676C /* AuthManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D291F7F52B850AB5002E676C /* AuthManagerTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +73,8 @@
 		D260C61A2B7BC38800DD0593 /* mymushroomshunterUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mymushroomshunterUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		D260C6272B7BC6E800DD0593 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D260C6292B7BC71000DD0593 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		D291F7F52B850AB5002E676C /* AuthManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManagerTests.swift; sourceTree = "<group>"; };
+		D291F7F72B850F6D002E676C /* mymushroomshunter.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = mymushroomshunter.xctestplan; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +155,7 @@
 		D260C5F12B7BC38400DD0593 = {
 			isa = PBXGroup;
 			children = (
+				D291F7F72B850F6D002E676C /* mymushroomshunter.xctestplan */,
 				D260C5FC2B7BC38400DD0593 /* mymushroomshunter */,
 				D260C60D2B7BC38800DD0593 /* mymushroomshunterTests */,
 				D260C6172B7BC38800DD0593 /* mymushroomshunterUITests */,
@@ -194,6 +198,7 @@
 			isa = PBXGroup;
 			children = (
 				D260C60E2B7BC38800DD0593 /* mymushroomshunterTests.swift */,
+				D291F7F52B850AB5002E676C /* AuthManagerTests.swift */,
 			);
 			path = mymushroomshunterTests;
 			sourceTree = "<group>";
@@ -398,6 +403,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D260C60F2B7BC38800DD0593 /* mymushroomshunterTests.swift in Sources */,
+				D291F7F62B850AB5002E676C /* AuthManagerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

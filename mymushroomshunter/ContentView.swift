@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct ContentView: View {
-    @EnvironmentObject var authManagerWrapper: AuthManagerWrapper
+    @EnvironmentObject var authManager: AuthManager
     var body: some View {
         VStack {
-            if authManagerWrapper.authManager.isUserAuthenticated {
+            if authManager.isUserAuthenticated {
                 TabView {
                     HomeView()
                         .tabItem {
@@ -25,11 +25,11 @@ struct ContentView: View {
                         .tabItem {
                             Label("Profile", systemImage: "person")
                         }
-                        .environmentObject(authManagerWrapper)
+                        .environmentObject(authManager)
                 }
             } else {
                 LoginView()
-                    .environmentObject(authManagerWrapper)
+                    .environmentObject(authManager)
             }
         }
     }
@@ -39,11 +39,19 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
-            .environmentObject(AuthManagerWrapper(authManager: MockAuthManager(isUserAuthenticated: true)))
+            .environmentObject(
+                AuthManager(
+                    authService: MockAuthenticationService(currentUser: MockUser(uid: "123", email: "test@test.com"))
+                )
+            )
             .previewDisplayName("User Authenticated")
-
+        
         ContentView()
-            .environmentObject(AuthManagerWrapper(authManager: MockAuthManager(isUserAuthenticated: false)))
+            .environmentObject(
+                AuthManager(
+                    authService: MockAuthenticationService()
+                )
+            )
             .previewDisplayName("User Not Authenticated")
     }
 }

@@ -1,0 +1,36 @@
+{
+  "configurations" : [
+    {
+      "id" : "5AF86462-B3F2-4E9C-9F23-B1F0D0A6D156",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:mymushroomshunter.xcodeproj",
+      "identifier" : "D260C5F92B7BC38400DD0593",
+      "name" : "mymushroomshunter"
+    }
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:mymushroomshunter.xcodeproj",
+        "identifier" : "D260C6092B7BC38800DD0593",
+        "name" : "mymushroomshunterTests"
+      }
+    },
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:mymushroomshunter.xcodeproj",
+        "identifier" : "D260C6132B7BC38800DD0593",
+        "name" : "mymushroomshunterUITests"
+      }
+    }
+  ],
+  "version" : 1
+}

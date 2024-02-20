@@ -9,7 +9,7 @@ import SwiftUI
 import FirebaseAuth
 
 struct LoginView: View {
-    @EnvironmentObject var authManagerWrapper: AuthManagerWrapper
+    @EnvironmentObject var authManager: AuthManager
     @State private var email = ""
     @State private var password = ""
 
@@ -53,7 +53,7 @@ struct LoginView: View {
                     .foregroundStyle(.white)
                 
                 Button {
-                    authManagerWrapper.authManager.signIn(email: email, password: password)
+                    authManager.signIn(email: email, password: password)
                 } label: {
                     Text("Sign In")
                         .bold()
@@ -68,7 +68,7 @@ struct LoginView: View {
                 .offset(y: 100)
                 
                 Button {
-                    authManagerWrapper.authManager.signUp(email: email, password: password)
+                    authManager.signUp(email: email, password: password)
                 } label: {
                     Text("Don't have an account? Sign up!")
                         .bold()
@@ -98,5 +98,5 @@ extension View {
 
 #Preview {
     LoginView()
-        .environmentObject(AuthManagerWrapper(authManager: MockAuthManager(isUserAuthenticated: false)))
+        .environmentObject(AuthManager(authService: MockAuthenticationService()))
 }
