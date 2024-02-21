@@ -12,7 +12,15 @@ protocol MushroomRepository {
     func fetchUserMushrooms(userID: String, completion: @escaping ([Mushroom]?, Error?) -> Void)
 }
 
-class FirebaseMushroomRepository: MushroomRepository {
+class MushroomRepositoryWrapper: ObservableObject {
+    var repository: MushroomRepository
+
+    init(repository: MushroomRepository) {
+        self.repository = repository
+    }
+}
+
+class FirebaseMushroomRepository: MushroomRepository, ObservableObject {
     func fetchUserMushrooms(userID: String, completion: @escaping ([Mushroom]?, Error?) -> Void) {
         let db = Firestore.firestore()
         db.collection("mushrooms").whereField("userID", isEqualTo: userID).getDocuments { querySnapshot, error in
@@ -28,7 +36,7 @@ class FirebaseMushroomRepository: MushroomRepository {
     }
 }
 
-class MockMushroomRepository: MushroomRepository {
+class MockMushroomRepository: MushroomRepository, ObservableObject {
     var mockMushrooms: [Mushroom]?
     var mockError: Error?
 

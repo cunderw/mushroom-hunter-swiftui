@@ -9,7 +9,8 @@ import SwiftUI
 
 struct MyMushroomsView: View {
     @EnvironmentObject var authManager: AuthManager
-    @EnvironmentObject var viewModel: MyMushroomViewModel
+    @EnvironmentObject var repositoryWrapper: MushroomRepositoryWrapper
+    @StateObject private var viewModel = MyMushroomViewModel()
     @State private var showingAddMushroomSheet = false
 
     var body: some View {
@@ -31,6 +32,7 @@ struct MyMushroomsView: View {
             }
             .navigationTitle("My Mushrooms")
             .onAppear {
+                viewModel.repository = repositoryWrapper.repository
                 if authManager.isUserAuthenticated {
                     viewModel.fetchUserMushrooms(userID: authManager.user!.uid)
                 }
@@ -50,7 +52,8 @@ struct MyMushroomsView_Previews: PreviewProvider {
             Mushroom.sample,
         ])
 
-        let viewModel = MyMushroomViewModel(repository: mockRepository)
+        let mockRepositoryWrapper = MushroomRepositoryWrapper(repository: mockRepository)
+
         let authManager = AuthManager(
             authService: MockAuthenticationService(
                 currentUser: MockUser(uid: "123", email: "test@example.com")
@@ -59,6 +62,6 @@ struct MyMushroomsView_Previews: PreviewProvider {
 
         MyMushroomsView()
             .environmentObject(authManager)
-            .environmentObject(viewModel)
+            .environmentObject(mockRepositoryWrapper)
     }
 }

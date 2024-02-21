@@ -10,15 +10,11 @@ import Foundation
 
 class MyMushroomViewModel: ObservableObject {
     @Published var mushrooms: [Mushroom] = []
-    private var repository: MushroomRepository
-
-    init(repository: MushroomRepository) {
-        self.repository = repository
-    }
+    var repository: MushroomRepository?
 
     func fetchUserMushrooms(userID: String) {
         print("Fetching Mushrooms for user: \(userID)")
-        repository.fetchUserMushrooms(userID: userID) { [weak self] mushrooms, error in
+        repository?.fetchUserMushrooms(userID: userID) { [weak self] mushrooms, error in
             DispatchQueue.main.async {
                 if let mushrooms = mushrooms {
                     self?.mushrooms = mushrooms

@@ -246,7 +246,6 @@
 		D291F7F82B855098002E676C /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				D291F8082B866D24002E676C /* ImagePicker.swift */,
 				D291F80A2B867E27002E676C /* Components */,
 				D291F7FB2B855BC0002E676C /* Data */,
 				D291F7FA2B8550C8002E676C /* Views */,
@@ -315,6 +314,7 @@
 		D291F80A2B867E27002E676C /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				D291F8082B866D24002E676C /* ImagePicker.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";

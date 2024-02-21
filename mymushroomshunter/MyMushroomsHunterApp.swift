@@ -17,17 +17,16 @@ extension MyMushroomsHunterApp {
 @main
 struct MyMushroomsHunterApp: App {
     @StateObject private var authManager = AuthManager(authService: FirebaseAuthenticationService())
+    @StateObject private var mushroomRepositoryWrapper = MushroomRepositoryWrapper(repository: FirebaseMushroomRepository())
     init() {
         setupAuthentication()
     }
 
     var body: some Scene {
         WindowGroup {
-            let mushroomRepository = FirebaseMushroomRepository()
-            let myMushroomsViewModel = MyMushroomViewModel(repository: mushroomRepository)
             ContentView()
                 .environmentObject(authManager)
-                .environmentObject(myMushroomsViewModel)
+                .environmentObject(mushroomRepositoryWrapper)
         }
     }
 }
