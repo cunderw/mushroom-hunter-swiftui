@@ -82,6 +82,19 @@ extension Mushroom {
     }
 }
 
+extension Mushroom: Equatable {
+    static func == (lhs: Mushroom, rhs: Mushroom) -> Bool {
+        return lhs.id == rhs.id &&
+            lhs.name == rhs.name &&
+            lhs.description == rhs.description &&
+            lhs.photoUrl == rhs.photoUrl &&
+            lhs.dateFound == rhs.dateFound &&
+            lhs.geolocation.latitude == rhs.geolocation.latitude &&
+            lhs.geolocation.longitude == rhs.geolocation.longitude &&
+            lhs.userID == rhs.userID
+    }
+}
+
 extension Mushroom {
     static var sample: Mushroom {
         Mushroom(

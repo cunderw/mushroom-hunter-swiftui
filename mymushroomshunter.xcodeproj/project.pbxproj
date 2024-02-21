@@ -32,6 +32,7 @@
 		D260C6372B7BC84D00DD0593 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = D260C6362B7BC84D00DD0593 /* FirebaseStorage */; };
 		D291F7FD2B855BDE002E676C /* MushroomRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D291F7FC2B855BDE002E676C /* MushroomRepository.swift */; };
 		D291F7FF2B856085002E676C /* AuthManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D291F7F52B850AB5002E676C /* AuthManagerTests.swift */; };
+		D291F8072B866335002E676C /* MyMushroomViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D291F8062B866335002E676C /* MyMushroomViewModelTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,7 @@
 		D291F7F52B850AB5002E676C /* AuthManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManagerTests.swift; sourceTree = "<group>"; };
 		D291F7F72B850F6D002E676C /* mymushroomshunter.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = mymushroomshunter.xctestplan; sourceTree = "<group>"; };
 		D291F7FC2B855BDE002E676C /* MushroomRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MushroomRepository.swift; sourceTree = "<group>"; };
+		D291F8062B866335002E676C /* MyMushroomViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMushroomViewModelTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,7 +196,7 @@
 		D260C60D2B7BC38800DD0593 /* mymushroomshunterTests */ = {
 			isa = PBXGroup;
 			children = (
-				D291F7F52B850AB5002E676C /* AuthManagerTests.swift */,
+				D291F8002B86628B002E676C /* Code */,
 				D260C60E2B7BC38800DD0593 /* mymushroomshunterTests.swift */,
 			);
 			path = mymushroomshunterTests;
@@ -271,6 +273,39 @@
 				D291F7FC2B855BDE002E676C /* MushroomRepository.swift */,
 			);
 			path = Data;
+			sourceTree = "<group>";
+		};
+		D291F8002B86628B002E676C /* Code */ = {
+			isa = PBXGroup;
+			children = (
+				D291F8022B86629B002E676C /* Features */,
+			);
+			path = Code;
+			sourceTree = "<group>";
+		};
+		D291F8022B86629B002E676C /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				D291F8052B866309002E676C /* MyMushrooms */,
+				D291F8032B8662A3002E676C /* Auth */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		D291F8032B8662A3002E676C /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				D291F7F52B850AB5002E676C /* AuthManagerTests.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		D291F8052B866309002E676C /* MyMushrooms */ = {
+			isa = PBXGroup;
+			children = (
+				D291F8062B866335002E676C /* MyMushroomViewModelTests.swift */,
+			);
+			path = MyMushrooms;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -436,6 +471,7 @@
 			files = (
 				D260C60F2B7BC38800DD0593 /* mymushroomshunterTests.swift in Sources */,
 				D291F7FF2B856085002E676C /* AuthManagerTests.swift in Sources */,
+				D291F8072B866335002E676C /* MyMushroomViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

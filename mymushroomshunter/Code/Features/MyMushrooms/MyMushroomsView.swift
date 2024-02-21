@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MyMushroomsView: View {
     @EnvironmentObject var authManager: AuthManager
-    @ObservedObject var viewModel = MushroomViewModel()
+    @EnvironmentObject var viewModel: MyMushroomViewModel
 
     var body: some View {
         NavigationStack {
@@ -38,15 +38,15 @@ struct MyMushroomsView_Previews: PreviewProvider {
             Mushroom.sample,
         ])
 
-        let viewModel = MushroomViewModel(repository: mockRepository)
-
-        MyMushroomsView(viewModel: viewModel)
-            .environmentObject(
-                AuthManager(
-                    authService: MockAuthenticationService(
-                        currentUser: MockUser(uid: "123", email: "test@example.com")
-                    )
-                )
+        let viewModel = MyMushroomViewModel(repository: mockRepository)
+        let authManager = AuthManager(
+            authService: MockAuthenticationService(
+                currentUser: MockUser(uid: "123", email: "test@example.com")
             )
+        )
+
+        MyMushroomsView()
+            .environmentObject(authManager)
+            .environmentObject(viewModel)
     }
 }

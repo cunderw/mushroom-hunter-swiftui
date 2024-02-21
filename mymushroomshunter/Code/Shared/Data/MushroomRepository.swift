@@ -29,20 +29,18 @@ class FirebaseMushroomRepository: MushroomRepository {
 }
 
 class MockMushroomRepository: MushroomRepository {
-    private var mockMushrooms: [Mushroom]
+    var mockMushrooms: [Mushroom]?
+    var mockError: Error?
 
     init(mushrooms: [Mushroom] = []) {
         self.mockMushrooms = mushrooms
     }
 
     func fetchUserMushrooms(userID: String, completion: @escaping ([Mushroom]?, Error?) -> Void) {
-        // introduce a delay to simulate network latency
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            completion(self.mockMushrooms, nil)
+        if let error = mockError {
+            completion(nil, error)
+        } else {
+            completion(mockMushrooms, nil)
         }
-    }
-
-    func addMockMushroom(_ mushroom: Mushroom) {
-        mockMushrooms.append(mushroom)
     }
 }

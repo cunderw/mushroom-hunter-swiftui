@@ -23,8 +23,11 @@ struct MyMushroomsHunterApp: App {
 
     var body: some Scene {
         WindowGroup {
+            let mushroomRepository = FirebaseMushroomRepository()
+            let myMushroomsViewModel = MyMushroomViewModel(repository: mushroomRepository)
             ContentView()
                 .environmentObject(authManager)
+                .environmentObject(myMushroomsViewModel)
         }
     }
 }

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject var authManager: AuthManager
+    @EnvironmentObject var myMushroomsViewModel: MyMushroomViewModel
     var body: some View {
         VStack {
             if authManager.isUserAuthenticated {
@@ -35,12 +36,24 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
+        let mockRepository = MockMushroomRepository(mushrooms: [
+            Mushroom.sample,
+            Mushroom.sample,
+            Mushroom.sample,
+            Mushroom.sample,
+            Mushroom.sample,
+            Mushroom.sample,
+        ])
+
+        let myMushroomsViewModel = MyMushroomViewModel(repository: mockRepository)
+
         ContentView()
             .environmentObject(
                 AuthManager(
                     authService: MockAuthenticationService(currentUser: MockUser(uid: "123", email: "test@test.com"))
                 )
             )
+            .environmentObject(myMushroomsViewModel)
             .previewDisplayName("User Authenticated")
 
         ContentView()
@@ -49,6 +62,7 @@ struct ContentView_Previews: PreviewProvider {
                     authService: MockAuthenticationService()
                 )
             )
+            .environmentObject(myMushroomsViewModel)
             .previewDisplayName("User Not Authenticated")
     }
 }

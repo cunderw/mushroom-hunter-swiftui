@@ -8,11 +8,11 @@
 import Combine
 import Foundation
 
-class MushroomViewModel: ObservableObject {
+class MyMushroomViewModel: ObservableObject {
     @Published var mushrooms: [Mushroom] = []
     private var repository: MushroomRepository
 
-    init(repository: MushroomRepository = FirebaseMushroomRepository()) {
+    init(repository: MushroomRepository) {
         self.repository = repository
     }
 
