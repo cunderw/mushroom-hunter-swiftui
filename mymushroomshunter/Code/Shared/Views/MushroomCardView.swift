@@ -35,11 +35,9 @@ struct MushroomCardView: View {
                 }
             }
         }
-        .padding()
         .background(Color.white)
         .cornerRadius(12)
-        .shadow(radius: 5)
-        .padding([.top, .horizontal])
+        .padding([.top])
     }
 
     @ViewBuilder
@@ -48,10 +46,10 @@ struct MushroomCardView: View {
         if layout == .vertical {
             Text(mushroom.name)
                 .font(.headline)
-            
+
             Text(mushroom.description)
                 .font(.subheadline)
-            
+
             Text("Found on \(dateFormatter.string(from: mushroom.dateFound))")
                 .font(.footnote)
                 .foregroundColor(.secondary)
@@ -60,20 +58,20 @@ struct MushroomCardView: View {
                 Text(mushroom.name)
                     .font(.headline)
                     .frame(maxWidth: .infinity, alignment: .leading)
-                
+
                 Text(mushroom.description)
                     .font(.subheadline)
                     .lineLimit(3)
                     .frame(maxWidth: .infinity, alignment: .leading)
-                
-                Text((dateFormatter.string(from: mushroom.dateFound)))
+
+                Text(dateFormatter.string(from: mushroom.dateFound))
                     .font(.footnote)
                     .foregroundColor(.secondary)
                     .frame(maxWidth: .infinity, alignment: .leading)
             }
         }
     }
-    
+
     @ViewBuilder
     private var mushroomImage: some View {
         AsyncImage(url: URL(string: mushroom.photoUrl)) { phase in
@@ -95,9 +93,7 @@ struct MushroomCardView: View {
         .cornerRadius(12)
         .frame(width: layout == .horizontal ? 100 : nil, height: 100)
     }
-
 }
-
 
 struct MushroomCardView_Previews: PreviewProvider {
     static var previews: some View {
@@ -114,4 +110,3 @@ struct MushroomCardView_Previews: PreviewProvider {
         }
     }
 }
-

@@ -33,6 +33,7 @@
 		D291F7FD2B855BDE002E676C /* MushroomRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D291F7FC2B855BDE002E676C /* MushroomRepository.swift */; };
 		D291F7FF2B856085002E676C /* AuthManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D291F7F52B850AB5002E676C /* AuthManagerTests.swift */; };
 		D291F8072B866335002E676C /* MyMushroomViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D291F8062B866335002E676C /* MyMushroomViewModelTests.swift */; };
+		D291F8092B866D24002E676C /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D291F8082B866D24002E676C /* ImagePicker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,7 @@
 		D291F7F72B850F6D002E676C /* mymushroomshunter.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = mymushroomshunter.xctestplan; sourceTree = "<group>"; };
 		D291F7FC2B855BDE002E676C /* MushroomRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MushroomRepository.swift; sourceTree = "<group>"; };
 		D291F8062B866335002E676C /* MyMushroomViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMushroomViewModelTests.swift; sourceTree = "<group>"; };
+		D291F8082B866D24002E676C /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -244,6 +246,8 @@
 		D291F7F82B855098002E676C /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				D291F8082B866D24002E676C /* ImagePicker.swift */,
+				D291F80A2B867E27002E676C /* Components */,
 				D291F7FB2B855BC0002E676C /* Data */,
 				D291F7FA2B8550C8002E676C /* Views */,
 				D291F7F92B8550A6002E676C /* Models */,
@@ -306,6 +310,13 @@
 				D291F8062B866335002E676C /* MyMushroomViewModelTests.swift */,
 			);
 			path = MyMushrooms;
+			sourceTree = "<group>";
+		};
+		D291F80A2B867E27002E676C /* Components */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -450,6 +461,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D291F8092B866D24002E676C /* ImagePicker.swift in Sources */,
 				D291F7FD2B855BDE002E676C /* MushroomRepository.swift in Sources */,
 				D2213CD82B7C0FCB005BCED7 /* MushroomCardView.swift in Sources */,
 				D2213CD62B7C0881005BCED7 /* MyMushroomsView.swift in Sources */,

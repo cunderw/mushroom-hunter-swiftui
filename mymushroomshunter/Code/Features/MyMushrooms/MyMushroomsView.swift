@@ -10,19 +10,31 @@ import SwiftUI
 struct MyMushroomsView: View {
     @EnvironmentObject var authManager: AuthManager
     @EnvironmentObject var viewModel: MyMushroomViewModel
+    @State private var showingAddMushroomSheet = false
 
     var body: some View {
         NavigationStack {
-            VStack {
-                List(viewModel.mushrooms) { mushroom in
-                    VStack(alignment: .leading) {
-                        MushroomCardView(mushroom: mushroom, layout: .horizontal)
+            List(viewModel.mushrooms) { mushroom in
+                MushroomCardView(mushroom: mushroom, layout: .horizontal)
+            }
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button(action: {
+                        showingAddMushroomSheet = true
+                    }) {
+                        Image(systemName: "plus")
                     }
                 }
-                .onAppear {
+            }
+            .sheet(isPresented: $showingAddMushroomSheet) {
+                AddMushroomView()
+            }
+            .navigationTitle("My Mushrooms")
+            .onAppear {
+                if authManager.isUserAuthenticated {
                     viewModel.fetchUserMushrooms(userID: authManager.user!.uid)
                 }
-            }.navigationTitle("My Mushrooms")
+            }
         }
     }
 }
