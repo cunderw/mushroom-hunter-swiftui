@@ -10,7 +10,7 @@ import FirebaseFirestore
 import Foundation
 
 struct Mushroom: Identifiable {
-    let id: String // Document ID
+    let id: String? // Document ID
     let name: String
     let description: String
     let photoUrl: String

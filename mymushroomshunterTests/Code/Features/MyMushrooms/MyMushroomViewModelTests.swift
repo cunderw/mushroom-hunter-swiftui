@@ -16,7 +16,8 @@ class MyMushroomViewModelTests: XCTestCase {
     override func setUp() {
         super.setUp()
         mockRepository = MockMushroomRepository()
-        viewModel = MyMushroomViewModel(repository: mockRepository)
+        viewModel = MyMushroomViewModel()
+        viewModel.repository = mockRepository
     }
 
     override func tearDown() {
@@ -65,7 +66,7 @@ class MyMushroomViewModelTests: XCTestCase {
 
     func testFetchUserMushroomsFailure() {
         // Given
-        mockRepository.mockError = NSError(domain: "TestError", code: -1, userInfo: nil)
+        mockRepository.mockFetchError = NSError(domain: "TestError", code: -1, userInfo: nil)
 
         let expectation = XCTestExpectation(description: "Failed to fetch user mushrooms")
 

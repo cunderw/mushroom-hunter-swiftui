@@ -13,7 +13,6 @@ class MyMushroomViewModel: ObservableObject {
     var repository: MushroomRepository?
 
     func fetchUserMushrooms(userID: String) {
-        print("Fetching Mushrooms for user: \(userID)")
         repository?.fetchUserMushrooms(userID: userID) { [weak self] mushrooms, error in
             DispatchQueue.main.async {
                 if let mushrooms = mushrooms {
