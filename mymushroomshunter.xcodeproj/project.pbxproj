@@ -34,6 +34,8 @@
 		D291F7FF2B856085002E676C /* AuthManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D291F7F52B850AB5002E676C /* AuthManagerTests.swift */; };
 		D291F8072B866335002E676C /* MyMushroomViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D291F8062B866335002E676C /* MyMushroomViewModelTests.swift */; };
 		D291F8092B866D24002E676C /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D291F8082B866D24002E676C /* ImagePicker.swift */; };
+		D291F80C2B86A4C6002E676C /* AddMushroomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D291F80B2B86A4C6002E676C /* AddMushroomViewModel.swift */; };
+		D291F80F2B87A3F6002E676C /* AddMushroomViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D291F80E2B87A3F6002E676C /* AddMushroomViewModelTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +81,8 @@
 		D291F7FC2B855BDE002E676C /* MushroomRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MushroomRepository.swift; sourceTree = "<group>"; };
 		D291F8062B866335002E676C /* MyMushroomViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMushroomViewModelTests.swift; sourceTree = "<group>"; };
 		D291F8082B866D24002E676C /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		D291F80B2B86A4C6002E676C /* AddMushroomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMushroomViewModel.swift; sourceTree = "<group>"; };
+		D291F80E2B87A3F6002E676C /* AddMushroomViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMushroomViewModelTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +145,7 @@
 			isa = PBXGroup;
 			children = (
 				D2213CCF2B7C02A9005BCED7 /* AddMushroomView.swift */,
+				D291F80B2B86A4C6002E676C /* AddMushroomViewModel.swift */,
 			);
 			path = AddMushroom;
 			sourceTree = "<group>";
@@ -289,6 +294,7 @@
 		D291F8022B86629B002E676C /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				D291F80D2B87A3A4002E676C /* AddMushroom */,
 				D291F8052B866309002E676C /* MyMushrooms */,
 				D291F8032B8662A3002E676C /* Auth */,
 			);
@@ -317,6 +323,14 @@
 				D291F8082B866D24002E676C /* ImagePicker.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		D291F80D2B87A3A4002E676C /* AddMushroom */ = {
+			isa = PBXGroup;
+			children = (
+				D291F80E2B87A3F6002E676C /* AddMushroomViewModelTests.swift */,
+			);
+			path = AddMushroom;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -471,6 +485,7 @@
 				D2213CC32B7BD951005BCED7 /* AuthManager.swift in Sources */,
 				D260C6002B7BC38400DD0593 /* ContentView.swift in Sources */,
 				D260C5FE2B7BC38400DD0593 /* MyMushroomsHunterApp.swift in Sources */,
+				D291F80C2B86A4C6002E676C /* AddMushroomViewModel.swift in Sources */,
 				D2213CD02B7C02A9005BCED7 /* AddMushroomView.swift in Sources */,
 				D2213CCB2B7BE74F005BCED7 /* NearMeView.swift in Sources */,
 				D2213CC52B7BDDC3005BCED7 /* ProfileView.swift in Sources */,
@@ -481,6 +496,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D291F80F2B87A3F6002E676C /* AddMushroomViewModelTests.swift in Sources */,
 				D260C60F2B7BC38800DD0593 /* mymushroomshunterTests.swift in Sources */,
 				D291F7FF2B856085002E676C /* AuthManagerTests.swift in Sources */,
 				D291F8072B866335002E676C /* MyMushroomViewModelTests.swift in Sources */,

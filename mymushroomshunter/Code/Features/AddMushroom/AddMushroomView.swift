@@ -9,27 +9,28 @@ import SwiftUI
 
 struct AddMushroomView: View {
     @Environment(\.presentationMode) var presentationMode
-    @State private var name: String = ""
-    @State private var description: String = ""
-    @State private var dateFound: Date = .init()
-    @State private var selectedImage: UIImage?
+    @EnvironmentObject var authManager: AuthManager
+    @EnvironmentObject var repositoryWrapper: MushroomRepositoryWrapper
+    @StateObject private var viewModel = AddMushroomViewModel()
     @State private var isShowingImagePicker: Bool = false
+    @State private var showAlert = false
+    @State private var alertMessage = ""
 
     var body: some View {
         NavigationView {
             Form {
                 Section(header: Text("Mushroom Details")) {
-                    TextField("Name", text: $name)
-                    TextEditor(text: $description)
+                    TextField("Name", text: $viewModel.name)
+                    TextEditor(text: $viewModel.description)
                         .frame(height: 100)
-                    DatePicker("Date Found", selection: $dateFound, displayedComponents: .date)
+                    DatePicker("Date Found", selection: $viewModel.dateFound, displayedComponents: .date)
                 }
 
                 Section(header: Text("Photo")) {
                     Button(action: {
                         isShowingImagePicker = true
                     }) {
-                        if let selectedImage = selectedImage {
+                        if let selectedImage = viewModel.selectedImage {
                             Image(uiImage: selectedImage)
                                 .resizable()
                                 .scaledToFit()
@@ -40,6 +41,9 @@ struct AddMushroomView: View {
                 }
             }
             .navigationTitle("Add Mushroom")
+            .onAppear {
+                viewModel.repository = repositoryWrapper.repository
+            }
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     Button("Cancel") {
@@ -48,18 +52,52 @@ struct AddMushroomView: View {
                 }
                 ToolbarItem(placement: .topBarTrailing) {
                     Button("Save") {
-                        // TODO: - Hookup View Model
-                        self.presentationMode.wrappedValue.dismiss()
+                        viewModel.saveMushroom(userID: "YourUserID") { success, error in
+                            if success {
+                                presentationMode.wrappedValue.dismiss()
+                            } else if let error = error {
+                                alertMessage = error.localizedDescription
+                                showAlert = true
+                            }
+                        }
                     }
                 }
             }
+            .alert(isPresented: $showAlert) {
+                Alert(
+                    title: Text("Error"),
+                    message: Text(alertMessage),
+                    dismissButton: .default(Text("OK"))
+                )
+            }
             .sheet(isPresented: $isShowingImagePicker) {
-                ImagePicker(selectedImage: $selectedImage, sourceType: .photoLibrary)
+                ImagePicker(selectedImage: $viewModel.selectedImage, sourceType: .photoLibrary)
             }
         }
     }
 }
 
-#Preview {
-    AddMushroomView()
+struct AddMushroomView_Previews: PreviewProvider {
+    static var previews: some View {
+        let mockRepository = MockMushroomRepository(mushrooms: [
+            Mushroom.sample,
+            Mushroom.sample,
+            Mushroom.sample,
+            Mushroom.sample,
+            Mushroom.sample,
+            Mushroom.sample,
+        ])
+
+        let mockRepositoryWrapper = MushroomRepositoryWrapper(repository: mockRepository)
+
+        let authManager = AuthManager(
+            authService: MockAuthenticationService(
+                currentUser: MockUser(uid: "123", email: "test@example.com")
+            )
+        )
+
+        AddMushroomView()
+            .environmentObject(authManager)
+            .environmentObject(mockRepositoryWrapper)
+    }
 }
