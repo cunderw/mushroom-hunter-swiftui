@@ -18,6 +18,7 @@ protocol MushroomRepository {
     func fetchUserMushrooms(userID: String, completion: @escaping ([Mushroom]?, Error?) -> Void)
     func saveMushroom(mushroom: Mushroom, completion: @escaping (Result<String, Error>) -> Void)
     func uploadImage(image: UIImage, completion: @escaping (Result<URL, Error>) -> Void)
+    func removeUserMushroomsListener()
 }
 
 class MushroomRepositoryWrapper: ObservableObject {
@@ -29,19 +30,27 @@ class MushroomRepositoryWrapper: ObservableObject {
 }
 
 class FirebaseMushroomRepository: MushroomRepository, ObservableObject {
+    private var userMushroomsListener: ListenerRegistration?
     func fetchUserMushrooms(userID: String, completion: @escaping ([Mushroom]?, Error?) -> Void) {
-        print("[FirebaseRepository] - Fetching User Mushrooms")
+        userMushroomsListener?.remove()
+
         let db = Firestore.firestore()
-        db.collection("mushrooms").whereField("userID", isEqualTo: userID).getDocuments { querySnapshot, error in
-            if let querySnapshot = querySnapshot {
-                let mushrooms = querySnapshot.documents.compactMap { documentSnapshot -> Mushroom? in
-                    Mushroom(document: documentSnapshot)
+        userMushroomsListener = db.collection("mushrooms").whereField("userID", isEqualTo: userID)
+            .addSnapshotListener { querySnapshot, error in
+                if let error = error {
+                    print("[FirebaseRepository] - Error fetching mushrooms: \(error.localizedDescription)")
+                    completion(nil, error)
+                } else if let querySnapshot = querySnapshot {
+                    let mushrooms = querySnapshot.documents.compactMap { documentSnapshot -> Mushroom? in
+                        Mushroom(document: documentSnapshot)
+                    }
+                    completion(mushrooms, nil)
                 }
-                completion(mushrooms, nil)
-            } else if let error = error {
-                completion(nil, error)
             }
-        }
+    }
+
+    func removeUserMushroomsListener() {
+        userMushroomsListener?.remove()
     }
 
     func saveMushroom(mushroom: Mushroom, completion: @escaping (Result<String, Error>) -> Void) {
@@ -184,4 +193,6 @@ class MockMushroomRepository: MushroomRepository, ObservableObject {
             }
         }
     }
+
+    func removeUserMushroomsListener() {}
 }

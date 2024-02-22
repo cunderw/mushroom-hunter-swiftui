@@ -12,15 +12,17 @@ class MyMushroomViewModel: ObservableObject {
     @Published var mushrooms: [Mushroom] = []
     var repository: MushroomRepository?
 
-    func fetchUserMushrooms(userID: String) {
-        repository?.fetchUserMushrooms(userID: userID) { [weak self] mushrooms, error in
-            DispatchQueue.main.async {
-                if let mushrooms = mushrooms {
-                    self?.mushrooms = mushrooms
-                } else if let error = error {
-                    print("Error fetching mushrooms: \(error.localizedDescription)")
-                }
+    func startListeningForUserMushrooms(userID: String) {
+        repository?.fetchUserMushrooms(userID: userID, completion: { [weak self] mushrooms, error in
+            if let mushrooms = mushrooms {
+                self?.mushrooms = mushrooms
+            } else if let error = error {
+                print("Error fetching mushrooms: \(error.localizedDescription)")
             }
-        }
+        })
+    }
+
+    func stopListening() {
+        repository?.removeUserMushroomsListener()
     }
 }

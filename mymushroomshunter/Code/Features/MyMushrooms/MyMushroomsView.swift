@@ -34,8 +34,11 @@ struct MyMushroomsView: View {
             .onAppear {
                 viewModel.repository = repositoryWrapper.repository
                 if authManager.isUserAuthenticated {
-                    viewModel.fetchUserMushrooms(userID: authManager.user!.uid)
+                    viewModel.startListeningForUserMushrooms(userID: authManager.user!.uid)
                 }
+            }
+            .onDisappear {
+                viewModel.stopListening()
             }
         }
     }

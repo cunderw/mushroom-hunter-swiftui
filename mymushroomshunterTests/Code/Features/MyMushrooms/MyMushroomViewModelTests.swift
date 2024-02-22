@@ -53,7 +53,7 @@ class MyMushroomViewModelTests: XCTestCase {
         let expectation = XCTestExpectation(description: "Successfully fetched user mushrooms")
 
         // When
-        viewModel.fetchUserMushrooms(userID: "testUserID")
+        viewModel.startListeningForUserMushrooms(userID: "testUserID")
 
         // Then
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) { // Wait for async call
@@ -71,7 +71,7 @@ class MyMushroomViewModelTests: XCTestCase {
         let expectation = XCTestExpectation(description: "Failed to fetch user mushrooms")
 
         // When
-        viewModel.fetchUserMushrooms(userID: "testUserID")
+        viewModel.startListeningForUserMushrooms(userID: "testUserID")
 
         // Then
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) { // Wait for async call
