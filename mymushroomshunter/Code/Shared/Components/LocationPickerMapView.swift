@@ -10,33 +10,34 @@ import SwiftUI
 
 struct LocationPickerMapView: UIViewRepresentable {
     @Binding var selectedLocation: CLLocationCoordinate2D?
-    var region: MKCoordinateRegion
+    @Binding var region: MKCoordinateRegion
 
     func makeUIView(context: Context) -> MKMapView {
         let mapView = MKMapView()
-        mapView.setRegion(region, animated: true)
-        mapView.showsUserLocation = true
-
-        let tapRecognizer = UITapGestureRecognizer(target: context.coordinator, action: #selector(Coordinator.mapTapped))
-        mapView.addGestureRecognizer(tapRecognizer)
-
+        mapView.delegate = context.coordinator
         return mapView
     }
 
-    func updateUIView(_ uiView: MKMapView, context: Context) {
+    func updateUIView(_ mapView: MKMapView, context: Context) {
+        mapView.setRegion(region, animated: true)
+
         if let selectedLocation = selectedLocation {
+            // Remove all annotations and add the new one
+            mapView.removeAnnotations(mapView.annotations)
             let annotation = MKPointAnnotation()
             annotation.coordinate = selectedLocation
-            uiView.removeAnnotations(uiView.annotations) // Remove existing annotations
-            uiView.addAnnotation(annotation)
+            mapView.addAnnotation(annotation)
         }
+
+        let tapRecognizer = UITapGestureRecognizer(target: context.coordinator, action: #selector(Coordinator.mapTapped))
+        mapView.addGestureRecognizer(tapRecognizer)
     }
 
     func makeCoordinator() -> Coordinator {
         Coordinator(self)
     }
 
-    class Coordinator: NSObject {
+    class Coordinator: NSObject, MKMapViewDelegate {
         var parent: LocationPickerMapView
 
         init(_ parent: LocationPickerMapView) {
@@ -44,11 +45,10 @@ struct LocationPickerMapView: UIViewRepresentable {
         }
 
         @objc func mapTapped(gesture: UITapGestureRecognizer) {
-            let location = gesture.location(in: gesture.view)
-            if let mapView = gesture.view as? MKMapView {
-                let coordinate = mapView.convert(location, toCoordinateFrom: mapView)
-                parent.selectedLocation = coordinate
-            }
+            let mapView = gesture.view as! MKMapView
+            let location = gesture.location(in: mapView)
+            let coordinate = mapView.convert(location, toCoordinateFrom: mapView)
+            parent.selectedLocation = coordinate
         }
     }
 }

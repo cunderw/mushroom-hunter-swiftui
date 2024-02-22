@@ -8,8 +8,8 @@
 import Combine
 import CoreLocation
 import MapKit
-import SwiftUI
 import os
+import SwiftUI
 
 enum ViewModelError: Error {
     case formIncompleteOrRepositoryNotSet
@@ -22,6 +22,7 @@ class AddMushroomViewModel: NSObject, ObservableObject, CLLocationManagerDelegat
     @Published var selectedImage: UIImage?
     @Published var selectedLocation: CLLocationCoordinate2D?
     @Published var mapRegion: MKCoordinateRegion = .init()
+    @Published var isLocationServicesDisabled: Bool = false
 
     var repository: MushroomRepository?
 
@@ -44,22 +45,36 @@ class AddMushroomViewModel: NSObject, ObservableObject, CLLocationManagerDelegat
     override init() {
         super.init()
         locationManager.delegate = self
-        checkIfLocationServicesIsEnabled()
+        locationManager.requestWhenInUseAuthorization()
     }
 
-    func checkIfLocationServicesIsEnabled() {
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager.requestWhenInUseAuthorization()
-            locationManager.startUpdatingLocation()
-        } else {
-            // TODO: -  Handle location services disabled
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        Self.logger.trace("[AddMushroomViewModel] - LocationManager autorization changed")
+        switch manager.authorizationStatus {
+        case .notDetermined:
+            break
+        case .restricted, .denied:
+            // Permission was denied or restricted, update the UI to show an alert
+            Self.logger.warning("[AddMushroomViewModel] - No location authorization")
+            DispatchQueue.main.async {
+                self.isLocationServicesDisabled = true
+            }
+        case .authorizedWhenInUse, .authorizedAlways:
+            Self.logger.trace("[AddMushroomViewModel] - Location authorized, starting updating location")
+            DispatchQueue.main.async {
+                self.isLocationServicesDisabled = false
+                self.locationManager.startUpdatingLocation() // Optional: Start location updates
+            }
+        @unknown default:
+            Self.logger.error("[AddMushroomViewModel] - Unknown location status")
         }
     }
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let currentLocation = locations.first else { return }
+        Self.logger.trace("[AddMushroomViewModel] - Location Changed:  \(currentLocation.coordinate.latitude) - \(currentLocation.coordinate.longitude)")
         mapRegion = MKCoordinateRegion(center: currentLocation.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
-        locationManager.stopUpdatingLocation()
+        manager.stopUpdatingLocation()
     }
 
     func saveMushroom(userID: String, completion: @escaping (Bool, Error?) -> Void) {

@@ -87,6 +87,7 @@
 		D291F80E2B87A3F6002E676C /* AddMushroomViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMushroomViewModelTests.swift; sourceTree = "<group>"; };
 		D291F8102B87B354002E676C /* LocationPickerMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPickerMapView.swift; sourceTree = "<group>"; };
 		D291F8142B87E516002E676C /* MushroomModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MushroomModelTests.swift; sourceTree = "<group>"; };
+		D291F8162B87F1FE002E676C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,6 +187,7 @@
 		D260C5FC2B7BC38400DD0593 /* mymushroomshunter */ = {
 			isa = PBXGroup;
 			children = (
+				D291F8162B87F1FE002E676C /* Info.plist */,
 				D260C6382B7BC87D00DD0593 /* Code */,
 				D260C6272B7BC6E800DD0593 /* GoogleService-Info.plist */,
 				D260C5FD2B7BC38400DD0593 /* MyMushroomsHunterApp.swift */,
@@ -682,6 +684,8 @@
 				DEVELOPMENT_TEAM = 447FMVD577;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = mymushroomshunter/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This app requires your locaion to show nearby mushrooms!";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -711,6 +715,8 @@
 				DEVELOPMENT_TEAM = 447FMVD577;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = mymushroomshunter/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This app requires your locaion to show nearby mushrooms!";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

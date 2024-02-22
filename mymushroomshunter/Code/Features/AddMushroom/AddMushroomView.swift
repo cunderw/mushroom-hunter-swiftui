@@ -27,11 +27,8 @@ struct AddMushroomView: View {
                     DatePicker("Date Found", selection: $viewModel.dateFound, displayedComponents: .date)
                 }
                 Section(header: Text("Location")) {
-                    LocationPickerMapView(selectedLocation: $viewModel.selectedLocation, region: viewModel.mapRegion)
+                    LocationPickerMapView(selectedLocation: $viewModel.selectedLocation, region: $viewModel.mapRegion)
                         .frame(height: 300)
-                        .onAppear {
-                            viewModel.checkIfLocationServicesIsEnabled()
-                        }
                 }
                 Section(header: Text("Photo")) {
                     Button(action: {
@@ -77,6 +74,14 @@ struct AddMushroomView: View {
                     message: Text(alertMessage),
                     dismissButton: .default(Text("OK"))
                 )
+            }
+            .alert("Location Services Disabled", isPresented: $viewModel.isLocationServicesDisabled) {
+                Button("Location Services are required. Open Settings", action: {
+                    if let url = URL(string: UIApplication.openSettingsURLString) {
+                        UIApplication.shared.open(url)
+                    }
+                })
+                Button("Cancel", role: .cancel) {}
             }
             .sheet(isPresented: $isShowingImagePicker) {
                 ImagePicker(selectedImage: $viewModel.selectedImage, sourceType: .photoLibrary)
