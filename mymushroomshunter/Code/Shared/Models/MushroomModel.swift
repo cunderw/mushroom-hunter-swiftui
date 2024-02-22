@@ -8,6 +8,14 @@
 import CoreLocation
 import FirebaseFirestore
 import Foundation
+import os
+
+protocol DocumentSnapshotProtocol {
+    var documentID: String { get }
+    func data() -> [String: Any]
+}
+
+extension QueryDocumentSnapshot: DocumentSnapshotProtocol {}
 
 struct Mushroom: Identifiable {
     let id: String? // Document ID
@@ -19,58 +27,31 @@ struct Mushroom: Identifiable {
     let userID: String
 }
 
-extension DateFormatter {
-    static let customDateFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS"
-        formatter.calendar = Calendar(identifier: .iso8601)
-        formatter.timeZone = TimeZone(secondsFromGMT: 0)
-        formatter.locale = Locale(identifier: "en_US_POSIX")
-        return formatter
-    }()
+extension Mushroom {
+    private static let logger = Logger(
+        subsystem: Bundle.main.bundleIdentifier!,
+        category: String(describing: Mushroom.self)
+    )
 }
 
 extension Mushroom {
-    init?(document: QueryDocumentSnapshot) {
+    init?(document: DocumentSnapshotProtocol) {
         let data = document.data()
 
-        guard let name = data["name"] as? String else {
-            print("Error: Expected 'name' to be a String but found \(type(of: data["name"]!))")
-            return nil
-        }
-
-        guard let description = data["description"] as? String else {
-            print("Error: Expected 'description' to be a String but found \(type(of: data["description"]!))")
-            return nil
-        }
-
-        guard let photoUrl = data["photoUrl"] as? String else {
-            print("Error: Expected 'photoUrl' to be a String but found \(type(of: data["photoUrl"]!))")
-            return nil
-        }
-
-        guard let userID = data["userID"] as? String else {
-            print("Error: Expected 'userID' to be a String but found \(type(of: data["userID"]!))")
-            return nil
-        }
-
-        guard let dateFoundString = data["dateFound"] as? String else {
-            print("Error: 'dateFound' is not a String")
-            return nil
-        }
-
-        guard let dateFound = DateFormatter.customDateFormatter.date(from: dateFoundString) else {
-            print("Error: 'dateFound' could not be converted to Date from string: \(dateFoundString)")
-            return nil
-        }
-
-        guard let geolocationDict = data["geolocation"] as? [String: Any],
+        guard let name = data["name"] as? String,
+              let description = data["description"] as? String,
+              let photoUrl = data["photoUrl"] as? String,
+              let userID = data["userID"] as? String,
+              let dateFoundTimestamp = data["dateFound"] as? Timestamp,
+              let geolocationDict = data["geolocation"] as? [String: Any],
               let latitude = geolocationDict["latitude"] as? Double,
               let longitude = geolocationDict["longitude"] as? Double
         else {
-            print("Error: Expected 'geolocation' to be a dictionary with Double latitude and longitude but found \(type(of: data["geolocation"]!))")
+            Mushroom.logger.error("[MushroomModel] - Document data is incomplete or incorrectly formatted")
             return nil
         }
+
+        let dateFound = dateFoundTimestamp.dateValue()
 
         self.id = document.documentID
         self.name = name

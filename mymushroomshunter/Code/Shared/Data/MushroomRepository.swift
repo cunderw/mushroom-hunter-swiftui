@@ -8,6 +8,7 @@
 import FirebaseFirestore
 import FirebaseStorage
 import Foundation
+import os
 
 enum UploadImageError: Error {
     case failedToCompressImage
@@ -30,20 +31,25 @@ class MushroomRepositoryWrapper: ObservableObject {
 }
 
 class FirebaseMushroomRepository: MushroomRepository, ObservableObject {
+    private let db = Firestore.firestore()
+    private static let logger = Logger(
+        subsystem: Bundle.main.bundleIdentifier!,
+        category: String(describing: FirebaseMushroomRepository.self)
+    )
     private var userMushroomsListener: ListenerRegistration?
     func fetchUserMushrooms(userID: String, completion: @escaping ([Mushroom]?, Error?) -> Void) {
+        Self.logger.trace("[FirebaseRepository] - Fetching user mushrooms")
         userMushroomsListener?.remove()
-
-        let db = Firestore.firestore()
         userMushroomsListener = db.collection("mushrooms").whereField("userID", isEqualTo: userID)
             .addSnapshotListener { querySnapshot, error in
                 if let error = error {
-                    print("[FirebaseRepository] - Error fetching mushrooms: \(error.localizedDescription)")
+                    Self.logger.error("[FirebaseRepository] - Error fetching mushrooms: \(error.localizedDescription)")
                     completion(nil, error)
                 } else if let querySnapshot = querySnapshot {
                     let mushrooms = querySnapshot.documents.compactMap { documentSnapshot -> Mushroom? in
                         Mushroom(document: documentSnapshot)
                     }
+                    Self.logger.trace("[FirebaseRepository] - Fetching user mushrooms complete")
                     completion(mushrooms, nil)
                 }
             }
@@ -54,20 +60,15 @@ class FirebaseMushroomRepository: MushroomRepository, ObservableObject {
     }
 
     func saveMushroom(mushroom: Mushroom, completion: @escaping (Result<String, Error>) -> Void) {
-        print("[FirebaseRepository] - Saving Mushroom")
+        Self.logger.trace("[FirebaseRepository] - Saving Mushroom")
 
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSSSS"
-        dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
-        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-
-        let dateFoundString = dateFormatter.string(from: mushroom.dateFound)
+        let dateFoundTimeStamp = Timestamp(date: mushroom.dateFound)
 
         let data: [String: Any] = [
             "name": mushroom.name,
             "description": mushroom.description,
             "photoUrl": mushroom.photoUrl,
-            "dateFound": dateFoundString,
+            "dateFound": dateFoundTimeStamp,
             "geolocation": [
                 "latitude": mushroom.geolocation.latitude,
                 "longitude": mushroom.geolocation.longitude
@@ -76,13 +77,13 @@ class FirebaseMushroomRepository: MushroomRepository, ObservableObject {
         ]
 
         if let id = mushroom.id {
-            let documentRef = Firestore.firestore().collection("mushrooms").document(id)
+            let documentRef = db.collection("mushrooms").document(id)
             documentRef.setData(data) { error in
                 if let error = error {
-                    print("[FirebaseRepository] - Error updating mushroom: \(error.localizedDescription)")
+                    Self.logger.error("[FirebaseRepository] - Error updating mushroom: \(error.localizedDescription)")
                     completion(.failure(error))
                 } else {
-                    print("[FirebaseRepository] - Mushroom successfully updated")
+                    Self.logger.trace("[FirebaseRepository] - Mushroom successfully updated")
                     completion(.success(id)) // Return the existing document ID
                 }
             }
@@ -90,14 +91,14 @@ class FirebaseMushroomRepository: MushroomRepository, ObservableObject {
             var documentRef: DocumentReference? = nil
             documentRef = Firestore.firestore().collection("mushrooms").addDocument(data: data) { error in
                 if let error = error {
-                    print("[FirebaseRepository] - Error saving new mushroom: \(error.localizedDescription)")
+                    Self.logger.error("[FirebaseRepository] - Error saving new mushroom: \(error.localizedDescription)")
                     completion(.failure(error))
                 } else if let documentID = documentRef?.documentID {
-                    print("[FirebaseRepository] - Mushroom successfully saved with ID: \(documentID)")
+                    Self.logger.trace("[FirebaseRepository] - Mushroom successfully saved with ID: \(documentID)")
                     completion(.success(documentID)) // Return the new document ID
                 } else {
                     // Handle the unexpected case where there's no error and no document reference
-                    print("[FirebaseRepository] - Unknown error: No DocumentID found after saving new mushroom")
+                    Self.logger.error("[FirebaseRepository] - Unknown error: No DocumentID found after saving new mushroom")
                     completion(.failure(NSError(domain: "FirebaseRepository", code: -1, userInfo: [NSLocalizedDescriptionKey: "Unknown error: No DocumentID found after saving new mushroom"])))
                 }
             }
@@ -105,7 +106,7 @@ class FirebaseMushroomRepository: MushroomRepository, ObservableObject {
     }
 
     func uploadImage(image: UIImage, completion: @escaping (Result<URL, Error>) -> Void) {
-        print("[FirebaseRepository] - Uploading Image")
+        Self.logger.trace("[FirebaseRepository] - Uploading Image")
         guard let imageData = image.jpegData(compressionQuality: 0.75) else {
             print("[FirebaseRepository] - Error uploading image: failed to compress image")
             completion(.failure(UploadImageError.failedToCompressImage))
@@ -117,10 +118,10 @@ class FirebaseMushroomRepository: MushroomRepository, ObservableObject {
         _ = storageRef.putData(imageData, metadata: nil) { metadata, error in
             guard metadata != nil else {
                 if let error = error {
-                    print("[FirebaseRepository] - Error uploading image: \(error.localizedDescription)")
+                    Self.logger.error("[FirebaseRepository] - Error uploading image: \(error.localizedDescription)")
                     completion(.failure(error))
                 } else {
-                    print("[FirebaseRepository] - Error uploading image: unkown error")
+                    Self.logger.error("[FirebaseRepository] - Error uploading image: unkown error")
                     completion(.failure(UploadImageError.unknownError))
                 }
                 return
@@ -128,13 +129,13 @@ class FirebaseMushroomRepository: MushroomRepository, ObservableObject {
 
             storageRef.downloadURL { url, error in
                 if let error = error {
-                    print("[FirebaseRepository] - Error  uploading image: \(error.localizedDescription)")
+                    Self.logger.error("[FirebaseRepository] - Error  uploading image: \(error.localizedDescription)")
                     completion(.failure(error))
                 } else if let url = url {
-                    print("[FirebaseRepository] - Image uploaded")
+                    Self.logger.trace("[FirebaseRepository] - Image uploaded")
                     completion(.success(url))
                 } else {
-                    print("[FirebaseRepository] - Error uploading image: no URL")
+                    Self.logger.error("[FirebaseRepository] - Error uploading image: no URL")
                     completion(.failure(UploadImageError.unknownError))
                 }
             }

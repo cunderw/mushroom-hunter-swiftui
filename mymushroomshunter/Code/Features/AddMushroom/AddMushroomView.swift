@@ -68,6 +68,7 @@ struct AddMushroomView: View {
                             }
                         }
                     }
+                    .disabled(!viewModel.formComplete)
                 }
             }
             .alert(isPresented: $showAlert) {

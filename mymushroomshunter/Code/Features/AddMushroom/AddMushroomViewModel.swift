@@ -9,6 +9,7 @@ import Combine
 import CoreLocation
 import MapKit
 import SwiftUI
+import os
 
 enum ViewModelError: Error {
     case formIncompleteOrRepositoryNotSet
@@ -34,6 +35,11 @@ class AddMushroomViewModel: NSObject, ObservableObject, CLLocationManagerDelegat
     }
 
     private var locationManager = CLLocationManager()
+
+    private static let logger = Logger(
+        subsystem: Bundle.main.bundleIdentifier!,
+        category: String(describing: FirebaseMushroomRepository.self)
+    )
 
     override init() {
         super.init()
