@@ -21,7 +21,6 @@ class AddMushroomViewModel: NSObject, ObservableObject, CLLocationManagerDelegat
     @Published var dateFound: Date = .init()
     @Published var selectedImage: UIImage?
     @Published var selectedLocation: CLLocationCoordinate2D?
-    @Published var mapRegion: MKCoordinateRegion = .init()
     @Published var isLocationServicesDisabled: Bool = false
 
     var repository: MushroomRepository?
@@ -63,18 +62,10 @@ class AddMushroomViewModel: NSObject, ObservableObject, CLLocationManagerDelegat
             Self.logger.trace("[AddMushroomViewModel] - Location authorized, starting updating location")
             DispatchQueue.main.async {
                 self.isLocationServicesDisabled = false
-                self.locationManager.startUpdatingLocation() // Optional: Start location updates
             }
         @unknown default:
             Self.logger.error("[AddMushroomViewModel] - Unknown location status")
         }
-    }
-
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let currentLocation = locations.first else { return }
-        Self.logger.trace("[AddMushroomViewModel] - Location Changed:  \(currentLocation.coordinate.latitude) - \(currentLocation.coordinate.longitude)")
-        mapRegion = MKCoordinateRegion(center: currentLocation.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
-        manager.stopUpdatingLocation()
     }
 
     func saveMushroom(userID: String, completion: @escaping (Bool, Error?) -> Void) {

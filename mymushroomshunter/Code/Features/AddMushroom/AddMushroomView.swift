@@ -16,6 +16,7 @@ struct AddMushroomView: View {
     @State private var isShowingImagePicker: Bool = false
     @State private var showAlert = false
     @State private var alertMessage = ""
+    @State private var initialRegionSet = false
 
     var body: some View {
         NavigationView {
@@ -27,7 +28,7 @@ struct AddMushroomView: View {
                     DatePicker("Date Found", selection: $viewModel.dateFound, displayedComponents: .date)
                 }
                 Section(header: Text("Location")) {
-                    LocationPickerMapView(selectedLocation: $viewModel.selectedLocation, region: $viewModel.mapRegion)
+                    LocationPickerMapView(selectedLocation: $viewModel.selectedLocation)
                         .frame(height: 300)
                 }
                 Section(header: Text("Photo")) {
