@@ -47,13 +47,18 @@ class FirebaseMushroomRepository: MushroomRepository, ObservableObject {
     func saveMushroom(mushroom: Mushroom, completion: @escaping (Result<String, Error>) -> Void) {
         print("[FirebaseRepository] - Saving Mushroom")
 
-        let dateFoundTimestamp = Timestamp(date: mushroom.dateFound)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSSSS"
+        dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+
+        let dateFoundString = dateFormatter.string(from: mushroom.dateFound)
 
         let data: [String: Any] = [
             "name": mushroom.name,
             "description": mushroom.description,
             "photoUrl": mushroom.photoUrl,
-            "dateFound": dateFoundTimestamp,
+            "dateFound": dateFoundString,
             "geolocation": [
                 "latitude": mushroom.geolocation.latitude,
                 "longitude": mushroom.geolocation.longitude
@@ -117,9 +122,10 @@ class FirebaseMushroomRepository: MushroomRepository, ObservableObject {
                     print("[FirebaseRepository] - Error  uploading image: \(error.localizedDescription)")
                     completion(.failure(error))
                 } else if let url = url {
+                    print("[FirebaseRepository] - Image uploaded")
                     completion(.success(url))
                 } else {
-                    print("[FirebaseRepository] - Error uploading image: unkown error")
+                    print("[FirebaseRepository] - Error uploading image: no URL")
                     completion(.failure(UploadImageError.unknownError))
                 }
             }
@@ -133,13 +139,14 @@ class MockMushroomRepository: MushroomRepository, ObservableObject {
     var mockSaveError: Error?
     var shouldFailUpload: Bool = false
     var mockUploadError: Error?
-    var mockUploadURL: URL?
+    var mockUploadURL: URL? = URL(string: "https://example.com/image.jpg")
 
     init(mushrooms: [Mushroom] = []) {
         self.mockMushrooms = mushrooms
     }
 
     func fetchUserMushrooms(userID: String, completion: @escaping ([Mushroom]?, Error?) -> Void) {
+        print("[MockFirebaseRepository] - Fetching User Mushrooms")
         if let error = mockFetchError {
             completion(nil, error)
         } else {
@@ -148,25 +155,31 @@ class MockMushroomRepository: MushroomRepository, ObservableObject {
     }
 
     func saveMushroom(mushroom: Mushroom, completion: @escaping (Result<String, Error>) -> Void) {
+        print("[MockFirebaseRepository] - Saving Mushroom")
         if let error = mockFetchError {
             completion(.failure(error))
         } else {
             let mockDocumentID = "mockDocumentID"
+            print("[FirebaseRepository] - Mushroom successfully saved with ID: \(mockDocumentID)")
             completion(.success(mockDocumentID))
         }
     }
 
     func uploadImage(image: UIImage, completion: @escaping (Result<URL, Error>) -> Void) {
+        print("[MockFirebaseRepository] - Uploading Image")
         if shouldFailUpload {
             if let mockError = mockUploadError {
                 completion(.failure(mockError))
             } else {
+                print("[MockFirebaseRepository] - Error uploading image: unkown error")
                 completion(.failure(UploadImageError.unknownError))
             }
         } else {
             if let mockUploadURL = mockUploadURL {
+                print("[MockFirebaseRepository] - Image uploaded")
                 completion(.success(mockUploadURL))
             } else {
+                print("[MockFirebaseRepository] - Error uploading image: unkown error")
                 completion(.failure(UploadImageError.unknownError))
             }
         }

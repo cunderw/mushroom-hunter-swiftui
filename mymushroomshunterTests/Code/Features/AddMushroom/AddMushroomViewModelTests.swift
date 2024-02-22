@@ -28,9 +28,9 @@ class AddMushroomViewModelTests: XCTestCase {
     }
 
     func testSaveMushroomSuccess() {
-        viewModel.name = "Test Mushroom"
-        viewModel.description = "Test Description"
-        viewModel.geolocation = CLLocationCoordinate2D(latitude: 10.0, longitude: 10.0)
+        viewModel.mushroomName = "Test Mushroom"
+        viewModel.mushroomDescription = "Test Description"
+        viewModel.selectedLocation = CLLocationCoordinate2D(latitude: 10.0, longitude: 10.0)
         viewModel.selectedImage = UIImage(systemName: "photo")
         mockRepository.mockUploadURL = URL(string: "https://example.com/image.jpg")
 
@@ -46,8 +46,8 @@ class AddMushroomViewModelTests: XCTestCase {
     }
 
     func testSaveMushroomIncompleteForm() {
-        viewModel.name = "Test Mushroom"
-        viewModel.description = ""
+        viewModel.mushroomName = "Test Mushroom"
+        viewModel.mushroomDescription = ""
 
         let expectation = self.expectation(description: "Mushroom save failed due to incomplete form")
 
@@ -66,9 +66,9 @@ class AddMushroomViewModelTests: XCTestCase {
     }
 
     func testSaveMushroomImageUploadFailure() {
-        viewModel.name = "Test Mushroom"
-        viewModel.description = "Test Description"
-        viewModel.geolocation = CLLocationCoordinate2D(latitude: 10.0, longitude: 10.0)
+        viewModel.mushroomName = "Test Mushroom"
+        viewModel.mushroomDescription = "Test Description"
+        viewModel.selectedLocation = CLLocationCoordinate2D(latitude: 10.0, longitude: 10.0)
         viewModel.selectedImage = UIImage(systemName: "photo")
         mockRepository.shouldFailUpload = true
         mockRepository.mockUploadError = UploadImageError.unknownError

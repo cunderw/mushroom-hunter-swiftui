@@ -5,6 +5,7 @@
 //  Created by Carson Underwood on 2/13/24.
 //
 
+import MapKit
 import SwiftUI
 
 struct AddMushroomView: View {
@@ -20,12 +21,18 @@ struct AddMushroomView: View {
         NavigationView {
             Form {
                 Section(header: Text("Mushroom Details")) {
-                    TextField("Name", text: $viewModel.name)
-                    TextEditor(text: $viewModel.description)
+                    TextField("Name", text: $viewModel.mushroomName)
+                    TextEditor(text: $viewModel.mushroomDescription)
                         .frame(height: 100)
                     DatePicker("Date Found", selection: $viewModel.dateFound, displayedComponents: .date)
                 }
-
+                Section(header: Text("Location")) {
+                    LocationPickerMapView(selectedLocation: $viewModel.selectedLocation, region: viewModel.mapRegion)
+                        .frame(height: 300)
+                        .onAppear {
+                            viewModel.checkIfLocationServicesIsEnabled()
+                        }
+                }
                 Section(header: Text("Photo")) {
                     Button(action: {
                         isShowingImagePicker = true
@@ -52,7 +59,7 @@ struct AddMushroomView: View {
                 }
                 ToolbarItem(placement: .topBarTrailing) {
                     Button("Save") {
-                        viewModel.saveMushroom(userID: "YourUserID") { success, error in
+                        viewModel.saveMushroom(userID: authManager.user!.uid) { success, error in
                             if success {
                                 presentationMode.wrappedValue.dismiss()
                             } else if let error = error {

@@ -36,6 +36,7 @@
 		D291F8092B866D24002E676C /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D291F8082B866D24002E676C /* ImagePicker.swift */; };
 		D291F80C2B86A4C6002E676C /* AddMushroomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D291F80B2B86A4C6002E676C /* AddMushroomViewModel.swift */; };
 		D291F80F2B87A3F6002E676C /* AddMushroomViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D291F80E2B87A3F6002E676C /* AddMushroomViewModelTests.swift */; };
+		D291F8112B87B354002E676C /* LocationPickerMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D291F8102B87B354002E676C /* LocationPickerMapView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +84,7 @@
 		D291F8082B866D24002E676C /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		D291F80B2B86A4C6002E676C /* AddMushroomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMushroomViewModel.swift; sourceTree = "<group>"; };
 		D291F80E2B87A3F6002E676C /* AddMushroomViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMushroomViewModelTests.swift; sourceTree = "<group>"; };
+		D291F8102B87B354002E676C /* LocationPickerMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPickerMapView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -321,6 +323,7 @@
 			isa = PBXGroup;
 			children = (
 				D291F8082B866D24002E676C /* ImagePicker.swift */,
+				D291F8102B87B354002E676C /* LocationPickerMapView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -477,6 +480,7 @@
 			files = (
 				D291F8092B866D24002E676C /* ImagePicker.swift in Sources */,
 				D291F7FD2B855BDE002E676C /* MushroomRepository.swift in Sources */,
+				D291F8112B87B354002E676C /* LocationPickerMapView.swift in Sources */,
 				D2213CD82B7C0FCB005BCED7 /* MushroomCardView.swift in Sources */,
 				D2213CD62B7C0881005BCED7 /* MyMushroomsView.swift in Sources */,
 				D260C62A2B7BC71000DD0593 /* LoginView.swift in Sources */,

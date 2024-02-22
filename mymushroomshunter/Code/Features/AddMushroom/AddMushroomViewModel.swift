@@ -7,28 +7,53 @@
 
 import Combine
 import CoreLocation
+import MapKit
 import SwiftUI
 
 enum ViewModelError: Error {
     case formIncompleteOrRepositoryNotSet
 }
 
-class AddMushroomViewModel: ObservableObject {
-    @Published var name: String = ""
-    @Published var description: String = ""
-    @Published var geolocation: CLLocationCoordinate2D?
+class AddMushroomViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
+    @Published var mushroomName: String = ""
+    @Published var mushroomDescription: String = ""
     @Published var dateFound: Date = .init()
     @Published var selectedImage: UIImage?
+    @Published var selectedLocation: CLLocationCoordinate2D?
+    @Published var mapRegion: MKCoordinateRegion = .init()
 
     var repository: MushroomRepository?
 
     var formComplete: Bool {
-        !name.isEmpty && !description.isEmpty && selectedImage != nil && isGeolocationSet
+        !mushroomName.isEmpty && !mushroomDescription.isEmpty && selectedImage != nil && isGeolocationSet
     }
 
     private var isGeolocationSet: Bool {
-        guard let geolocation = geolocation else { return false }
+        guard let geolocation = selectedLocation else { return false }
         return geolocation.latitude != 0 && geolocation.longitude != 0
+    }
+
+    private var locationManager = CLLocationManager()
+
+    override init() {
+        super.init()
+        locationManager.delegate = self
+        checkIfLocationServicesIsEnabled()
+    }
+
+    func checkIfLocationServicesIsEnabled() {
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.requestWhenInUseAuthorization()
+            locationManager.startUpdatingLocation()
+        } else {
+            // TODO: -  Handle location services disabled
+        }
+    }
+
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let currentLocation = locations.first else { return }
+        mapRegion = MKCoordinateRegion(center: currentLocation.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+        locationManager.stopUpdatingLocation()
     }
 
     func saveMushroom(userID: String, completion: @escaping (Bool, Error?) -> Void) {
@@ -37,7 +62,7 @@ class AddMushroomViewModel: ObservableObject {
             return
         }
 
-        if let image = selectedImage, let geolocation = geolocation {
+        if let image = selectedImage, let geolocation = selectedLocation {
             repository.uploadImage(image: image) { [weak self] result in
                 switch result {
                 case .success(let url):
@@ -54,8 +79,8 @@ class AddMushroomViewModel: ObservableObject {
     private func createAndSaveMushroom(with photoUrl: URL, geolocation: CLLocationCoordinate2D, userID: String, completion: @escaping (Bool, Error?) -> Void) {
         let mushroom = Mushroom(
             id: nil,
-            name: name,
-            description: description,
+            name: mushroomName,
+            description: mushroomDescription,
             photoUrl: photoUrl.absoluteString,
             dateFound: dateFound,
             geolocation: geolocation,
